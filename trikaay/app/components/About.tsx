@@ -136,7 +136,7 @@ const About = () => {
                   src="/images/trikaay_logo.jpeg.jpg"
                   alt="Trikaay Clinic"
                   fill
-                  className="object-cover"
+                  className="object-contain"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
               </div>

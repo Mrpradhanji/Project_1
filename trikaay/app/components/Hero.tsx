@@ -103,6 +103,7 @@ const Hero = () => {
       </div>
 
       {/* Scroll Indicator */}
+      {/*
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-40">
         <div className="flex flex-col items-center space-y-2">
           <span className="text-white/70 text-sm font-medium">Scroll to explore</span>
@@ -110,7 +111,7 @@ const Hero = () => {
             <div className="w-1 h-3 bg-accent-color rounded-full mt-2 animate-bounce"></div>
           </div>
         </div>
-      </div>
+      </div>*/}
     </section>
   );
 };

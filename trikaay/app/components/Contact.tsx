@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import emailjs from 'emailjs-com';
 
 const Contact = () => {
   const contactRef = useRef<HTMLDivElement>(null);
@@ -16,6 +17,14 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
+    // Initialize EmailJS with environment variables (optional for now)
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+    if (publicKey) {
+      emailjs.init(publicKey);
+    } else {
+      console.warn('EmailJS Public Key not found - form submission will be disabled');
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -42,23 +51,60 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Check if EmailJS is configured
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    
+    if (!publicKey || !serviceId || !templateId) {
+      alert('EmailJS is not configured. Please check your environment variables.');
+      return;
+    }
+    
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    // Reset form
-    setFormData({
-      fullName: '',
-      phone: '',
-      email: '',
-      date: '',
-      time: '',
-      message: ''
-    });
-    
-    alert('Thank you! Your consultation request has been submitted successfully.');
+    try {
+      // Debug: Log environment variables
+      console.log('Public Key:', publicKey);
+      console.log('Service ID:', serviceId);
+      console.log('Template ID:', templateId);
+      
+      // EmailJS template parameters
+      const templateParams = {
+        user_name: formData.fullName,
+        user_email: formData.email,
+        user_phone: formData.phone,
+        user_date: formData.date,
+        user_time: formData.time,
+        user_message: formData.message,
+        reply_to: formData.email
+      };
+
+      console.log('Template Params:', templateParams);
+
+      // Send email using EmailJS
+      const result = await emailjs.send(serviceId, templateId, templateParams);
+
+      console.log('EmailJS Result:', result);
+
+      // Reset form
+      setFormData({
+        fullName: '',
+        phone: '',
+        email: '',
+        date: '',
+        time: '',
+        message: ''
+      });
+      
+      alert('Thank you! Your consultation request has been submitted successfully.');
+    } catch (error) {
+      console.error('Email sending failed:', error);
+      alert('Sorry, there was an error sending your message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -70,8 +116,9 @@ const Contact = () => {
         </svg>
       ),
       title: "Visit Us",
-      details: "123 Luxury Avenue, Business District, Dubai, UAE",
-      link: "#"
+      details: "SE - 86 Jaipuria Sunrise Plaza, Ahinsa Khand 1, Indirapuram, Ghaziabad, Uttar Pradesh, India",
+      link: "#",
+      type: "address"
     },
     {
       icon: (
@@ -80,8 +127,11 @@ const Contact = () => {
         </svg>
       ),
       title: "Call Us",
-      details: "+971 4 123 4567",
-      link: "tel:+97141234567"
+      phoneNumbers: [
+        { label: "India", number: "+91 98765 43210", link: "tel:+919876543210" },
+        { label: "International", number: "+971 4 123 4567", link: "tel:+97141234567" },
+      ],
+      type: "phone"
     },
     {
       icon: (
@@ -90,8 +140,9 @@ const Contact = () => {
         </svg>
       ),
       title: "Email Us",
-      details: "info@trikaay.com",
-      link: "mailto:info@trikaay.com"
+      details: "trikayahomeopathy@gmail.com",
+      link: "mailto:trikayahomeopathy@gmail.com",
+      type: "email"
     }
   ];
 
@@ -241,22 +292,38 @@ const Contact = () => {
             <div className="space-y-6">
               {contactInfo.map((info, index) => (
                 <div key={index} className="group">
-                  <a
-                    href={info.link}
-                    className="flex items-start space-x-4 p-6 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300 hover-lift"
-                  >
+                  <div className="flex items-start space-x-4 p-6 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300 hover-lift">
                     <div className="flex-shrink-0 w-12 h-12 bg-accent-color/20 rounded-lg flex items-center justify-center text-accent-color group-hover:bg-accent-color group-hover:text-white transition-all duration-300">
                       {info.icon}
                     </div>
-                    <div>
+                    <div className="flex-1">
                       <h4 className="font-inter font-semibold text-white mb-1">
                         {info.title}
                       </h4>
-                      <p className="font-inter text-gray-300">
-                        {info.details}
-                      </p>
+                      {info.type === "phone" && info.phoneNumbers ? (
+                        <div className="space-y-2">
+                          {info.phoneNumbers.map((phone, phoneIndex) => (
+                            <div key={phoneIndex} className="flex items-center space-x-2">
+                              <span className="font-inter text-gray-300 text-sm">{phone.label}:</span>
+                              <a 
+                                href={phone.link}
+                                className="font-inter text-white font-medium hover:text-accent-color transition-colors duration-300"
+                              >
+                                {phone.number}
+                              </a>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <a 
+                          href={info.link}
+                          className="font-inter text-gray-300 hover:text-accent-color transition-colors duration-300"
+                        >
+                          {info.details}
+                        </a>
+                      )}
                     </div>
-                  </a>
+                  </div>
                 </div>
               ))}
             </div>
