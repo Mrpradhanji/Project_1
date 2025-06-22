@@ -55,7 +55,7 @@ const Contact = () => {
     const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
     const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
     const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-    
+  
     if (!publicKey || !serviceId || !templateId) {
       alert('EmailJS is not configured. Please check your environment variables.');
       return;
@@ -160,11 +160,11 @@ const Contact = () => {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Contact Form */}
           <div className="slide-in-left">
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h3 className="font-playfair text-2xl font-bold text-white mb-6">
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 flex flex-col min-h-[500px]">
+              <h3 className="font-playfair text-center text-2xl font-bold text-white mb-6">
                 Book Your Consultation
               </h3>
               
@@ -261,7 +261,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-accent-color text-white py-4 px-8 rounded-full font-semibold text-lg hover:bg-yellow-600 transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-gray-300 text-black py-4 px-8 rounded-full font-semibold text-lg hover:bg-yellow-600 transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     <span className="flex items-center justify-center space-x-2">
@@ -276,10 +276,10 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Contact Information */}
-          <div className="slide-in-right space-y-8">
+          {/* Contact Information & Map */}
+          <div className="slide-in-right flex flex-col min-h-[500px]">
             {/* Contact Info Cards */}
-            <div className="space-y-6">
+            <div className="space-y-6 mb-8">
               {contactInfo.map((info, index) => (
                 <div key={index} className="group">
                   <div className="flex items-start space-x-4 p-6 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300 hover-lift">
@@ -318,49 +318,23 @@ const Contact = () => {
               ))}
             </div>
 
-            {/* Clinic Image */}
-            <div className="relative">
-              <div className="w-full h-64 rounded-2xl overflow-hidden">
-                <Image
-                  src="/images/trikaay_logo.jpeg.jpg"
-                  alt="Trikaay Clinic"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-              </div>
-              
-              {/* Floating Info Card */}
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-xl p-6 shadow-xl">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900 mb-1">Open</div>
-                  <div className="text-sm text-gray-600 font-medium">Mon - Sat: 9AM - 8PM</div>
-                  <div className="text-sm text-gray-600">Sunday: 10AM - 6PM</div>
+            {/* Google Map Card */}
+            <div className="w-full overflow-hidden rounded-2xl shadow-md border border-gray-700 bg-gray-100" style={{ minHeight: '200px' }}>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.619502324454!2d77.37340887601667!3d28.64116388368785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfbf75094f5cd%3A0xdbe0e296258d838!2sLens%20Teasers%20Professional%20Baby%20and%20Maternity%20Photography%20Studio!5e0!3m2!1sen!2sin!4v1750594834911!5m2!1sen!2sin"
+                width="100%"
+                height="200"
+                style={{ border: 0, width: '100%', minHeight: '250px' }}
+                allowFullScreen
+                title="Trikaay Clinic Location"
+              ></iframe>
+              <noscript>
+                <div className="p-4 text-center text-gray-700 bg-white rounded-b-2xl">
+                  Map could not be loaded. <a href="https://goo.gl/maps/2w6k8Qw2QwQ2" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">View on Google Maps</a>
                 </div>
-              </div>
+              </noscript>
             </div>
-
-            {/* Social Links */}
-            <div className="text-center">
-              <h4 className="font-inter font-semibold text-white mb-4">Follow Us</h4>
-              <div className="flex justify-center space-x-4">
-                <a href="#" className="w-12 h-12 bg-accent-color/20 rounded-full flex items-center justify-center text-accent-color hover:bg-accent-color hover:text-white transition-all duration-300">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
-                  </svg>
-                </a>
-                <a href="#" className="w-12 h-12 bg-accent-color/20 rounded-full flex items-center justify-center text-accent-color hover:bg-accent-color hover:text-white transition-all duration-300">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987 6.62 0 11.987-5.367 11.987-11.987C24.014 5.367 18.637.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.49-3.323-1.297C4.198 14.895 3.708 13.744 3.708 12.447s.49-2.448 1.418-3.323c.875-.807 2.026-1.297 3.323-1.297s2.448.49 3.323 1.297c.928.875 1.418 2.026 1.418 3.323s-.49 2.448-1.418 3.244c-.875.807-2.026 1.297-3.323 1.297zm7.83-9.781c-.49 0-.928-.175-1.297-.49-.368-.315-.49-.753-.49-1.243 0-.49.122-.928.49-1.243.369-.315.807-.49 1.297-.49s.928.175 1.297.49c.368.315.49.753.49 1.243 0 .49-.122.928-.49 1.243-.369.315-.807.49-1.297.49z"/>
-                  </svg>
-                </a>
-                <a href="#" className="w-12 h-12 bg-accent-color/20 rounded-full flex items-center justify-center text-accent-color hover:bg-accent-color hover:text-white transition-all duration-300">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                  </svg>
-                </a>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>

@@ -5,6 +5,7 @@ import Services from "./components/Services";
 import BeforeAfter from "./components/BeforeAfter";
 import Team from "./components/Team";
 import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -31,6 +32,7 @@ export default function Home() {
         pauseOnHover
         theme="dark" // or "dark" / "light"
       />
+      <Footer />
     </>
   );
 }

@@ -1,10 +1,35 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
 const About = () => {
   const aboutRef = useRef<HTMLDivElement>(null);
+
+  // Clinic images for carousel
+  const clinicImages = [
+    {
+      src: '/images/Clinic_1.jpg',
+      alt: 'Clinic View 1',
+    },
+    {
+      src: '/images/Clinic_2.jpg',
+      alt: 'Clinic View 2',
+    },
+    {
+      src: '/images/Clinic_3.jpg',
+      alt: 'Clinic View 3',
+    },
+  ];
+  const [current, setCurrent] = useState(0);
+
+  // Auto-slide effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % clinicImages.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [clinicImages.length]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -116,7 +141,7 @@ const About = () => {
 
             {/* CTA Button */}
             <div className="fade-in">
-              <button className="group bg-accent-color text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+              <button className="group bg-gray-300 text-gray-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
                 <span className="flex items-center space-x-2">
                   <span>Learn More About Us</span>
                   <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -127,34 +152,43 @@ const About = () => {
             </div>
           </div>
 
-          {/* Image */}
+          {/* Image Carousel */}
           <div className="slide-in-right relative">
-            <div className="relative">
-              {/* Main Image */}
-              <div className="relative w-full h-[600px] rounded-2xl overflow-hidden shadow-2xl">
-                <Image
-                  src="/images/trikaay_logo.jpeg.jpg"
-                  alt="Trikaay Clinic"
-                  fill
-                  className="object-contain"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+            <div className="relative w-full h-[600px] rounded-2xl overflow-hidden shadow-2xl">
+              <Image
+                src={clinicImages[current].src}
+                alt={clinicImages[current].alt}
+                fill
+                className="object-cover transition-all duration-3000"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+              {/* Navigation Dots */}
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
+                {clinicImages.map((img, idx) => (
+                  <button
+                    key={img.src}
+                    onClick={() => setCurrent(idx)}
+                    className={`w-3 h-3 rounded-full border-2 border-white transition-all duration-300 ${
+                      current === idx ? 'bg-accent-color scale-125' : 'bg-white/60'
+                    }`}
+                    aria-label={`Go to slide ${idx + 1}`}
+                  />
+                ))}
               </div>
-
-              {/* Floating Stats Card */}
-              <div className="absolute -bottom-8 -left-8 bg-white rounded-2xl p-6 shadow-xl">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-accent-color mb-1">15+</div>
-                  <div className="text-sm text-gray-600 font-medium">Years Experience</div>
-                </div>
+            </div>
+            {/* Floating Stats Card */}
+            <div className="absolute -bottom-8 -left-8 bg-white rounded-2xl p-6 shadow-xl">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-accent-color mb-1">15+</div>
+                <div className="text-sm text-gray-600 font-medium">Years Experience</div>
               </div>
-
-              {/* Floating Award Card */}
-              <div className="absolute -top-8 -right-8 bg-accent-color text-white rounded-2xl p-6 shadow-xl">
-                <div className="text-center">
-                  <div className="text-2xl font-bold mb-1">Award</div>
-                  <div className="text-sm opacity-90">Winning Clinic</div>
-                </div>
+            </div>
+            {/* Floating Award Card */}
+            <div className="absolute -top-8 -right-8 bg-accent-color text-white rounded-2xl p-6 shadow-xl">
+              <div className="text-center">
+                <div className="text-2xl text-gray-600 font-bold mb-1">Award</div>
+                <div className="text-sm text-gray-600 opacity-90">Winning Clinic</div>
               </div>
             </div>
           </div>

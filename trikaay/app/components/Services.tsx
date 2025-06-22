@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
+import { Droplets, ScanLine, StretchHorizontal } from 'lucide-react';
 
 const Services = () => {
   const servicesRef = useRef<HTMLDivElement>(null);
@@ -26,9 +27,9 @@ const Services = () => {
 
   const services = [
     {
-      title: "Facial Treatments",
-      description: "Advanced facial aesthetics and rejuvenation treatments for radiant, youthful skin.",
-      icon: "✨",
+      title: "Skin Rejuvenation",
+      description: "Gentle facials, peels, and hydrating care to restore your natural skin glow.",
+      icon: <Droplets className="w-10 h-10 text-[#ffe0bd]" />,
       features: [
         "Specialist facial aesthetics",
         "Laser Hair Removal",
@@ -37,13 +38,13 @@ const Services = () => {
         "Skin Boosters",
         "Anti-wrinkle injections"
       ],
-      image: "/images/trikaay_logo.jpeg.jpg",
-      color: "from-pink-500 to-purple-600"
+      image: "/images/Body_Skin.jpg",
+      color: ""
     },
     {
       title: "Body Treatments",
       description: "Comprehensive body sculpting and wellness treatments for your complete transformation.",
-      icon: "💪",
+      icon: <ScanLine className="w-10 h-10 text-[#3b82f6]" />,
       features: [
         "Laser Hair Removal",
         "Radio Frequency treatments",
@@ -52,13 +53,12 @@ const Services = () => {
         "Stretch mark treatments",
         "Hyperhidrosis treatment"
       ],
-      image: "/images/trikaay_logo.jpeg.jpg",
-      color: "from-blue-500 to-cyan-600"
+      image: "/images/AdvancedSkin_Rend.jpg",
     },
     {
       title: "Dermatology & Wellness",
       description: "Expert dermatological care and wellness solutions for optimal health and beauty.",
-      icon: "🌿",
+      icon: <StretchHorizontal className="w-10 h-10 text-[#10b981]" />,
       features: [
         "Dermatology consultation",
         "IV therapy",
@@ -67,8 +67,7 @@ const Services = () => {
         "Vascular treatments",
         "Pigmented laser treatments"
       ],
-      image: "/images/trikaay_logo.jpeg.jpg",
-      color: "from-green-500 to-emerald-600"
+      image: "/images/Dermatology.jpg",
     }
   ];
 
@@ -97,73 +96,45 @@ const Services = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 w-full">
           {services.map((service, index) => (
-            <div key={index} className="slide-in-left group">
-              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 h-full hover-lift border border-white/10 transition-all duration-500 hover:bg-white/10">
+            <div key={index} className="slide-in-left group w-full">
+              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-white/10 transition-all duration-500 hover:bg-white/10 flex flex-col">
                 {/* Service Header */}
                 <div className="text-center mb-6">
                   <div className="text-4xl mb-4">{service.icon}</div>
-                  <h3 className="font-playfair text-2xl font-bold text-white mb-3">
+                  <h3 className="font-playfair text-xl lg:text-2xl font-bold text-white mb-3">
                     {service.title}
                   </h3>
-                  <p className="font-inter text-gray-300 leading-relaxed">
+                  <p className="font-inter text-gray-300 leading-relaxed text-sm lg:text-base">
                     {service.description}
                   </p>
                 </div>
 
                 {/* Service Image */}
-                <div className="relative w-full h-48 rounded-xl overflow-hidden mb-6">
+                <div className="relative w-full h-64 lg:h-72 rounded-xl overflow-hidden mb-6">
                   <Image
                     src={service.image}
                     alt={service.title}
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className={`absolute inset-0 bg-gradient-to-t ${service.color} opacity-20`}></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                 </div>
 
                 {/* Features List */}
-                <div className="space-y-3">
-                  <h4 className="font-inter font-semibold text-white mb-4">Our treatments include:</h4>
+                <div className="space-y-3 flex-grow">
+                  <h4 className="font-inter font-semibold text-white mb-4 text-sm lg:text-base">Our treatments include:</h4>
                   {service.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-center space-x-3">
                       <div className="w-2 h-2 bg-accent-color rounded-full flex-shrink-0"></div>
-                      <span className="font-inter text-gray-300 text-sm">{feature}</span>
+                      <span className="font-inter text-gray-300 text-sm lg:text-base">{feature}</span>
                     </div>
                   ))}
-                </div>
-
-                {/* CTA Button */}
-                <div className="mt-8">
-                  <button className="w-full bg-accent-color text-white py-3 px-6 rounded-full font-semibold hover:bg-yellow-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
-                    Book Now
-                  </button>
                 </div>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Bottom CTA */}
-        <div className="fade-in text-center mt-16">
-          <div className="bg-gradient-to-r from-accent-color to-yellow-500 rounded-2xl p-8 md:p-12">
-            <h3 className="font-playfair text-3xl md:text-4xl font-bold text-white mb-4">
-              Ready to Transform Your Look?
-            </h3>
-            <p className="font-inter text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Book your consultation today and let our experts create a personalized treatment plan 
-              tailored to your unique needs and goals.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-gray-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg">
-                Book Consultation
-              </button>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-gray-900 transition-all duration-300 transform hover:scale-105">
-                View All Treatments
-              </button>
-            </div>
-          </div>
         </div>
       </div>
     </section>

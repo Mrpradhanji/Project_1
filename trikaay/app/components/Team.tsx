@@ -107,7 +107,7 @@ const Team = () => {
                     {teamMembers.certifications.map((cert, index) => (
                       <div key={index} className="flex items-center space-x-3">
                         <div className="w-2 h-2 bg-accent-color rounded-full"></div>
-                        <span className="font-inter text-gray-600">{cert}</span>
+                        <span className="font-inter text-gray-900">{cert}</span>
                       </div>
                     ))}
                   </div>
@@ -124,8 +124,6 @@ const Team = () => {
                     ))}
                   </div>
                 </div>
-
-                {/* CTA Button */}
                 
               </div>
             </div>
@@ -142,9 +140,6 @@ const Team = () => {
               Schedule a consultation with our experienced team and discover how we can help you 
               achieve your aesthetic and wellness goals.
             </p>
-            <button className="bg-accent-color text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
-              Book Your Consultation
-            </button>
           </div>
         </div>
       </div>
