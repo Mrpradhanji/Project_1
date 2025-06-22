@@ -16,6 +16,14 @@ const Contact = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState({
+    email: '',
+    phone: '',
+    date: '',
+  });
+
+  // Helper to get today's date in yyyy-mm-dd format
+  const todayStr = new Date().toISOString().split('T')[0];
 
   useEffect(() => {
     // Initialize EmailJS with environment variables
@@ -48,8 +56,36 @@ const Contact = () => {
     });
   };
 
+  const validate = () => {
+    let valid = true;
+    const newErrors = { email: '', phone: '', date: '' };
+    // Email validation
+    if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,}$/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address.';
+      valid = false;
+    }
+    // Phone validation (exactly 10 digits, only numbers)
+    if (!/^\d{10}$/.test(formData.phone.replace(/\D/g, ''))) {
+      newErrors.phone = 'Phone number must be exactly 10 digits.';
+      valid = false;
+    }
+    // Date validation (today or after)
+    if (formData.date) {
+      const today = new Date();
+      today.setHours(0,0,0,0);
+      const selected = new Date(formData.date);
+      if (selected < today) {
+        newErrors.date = 'Date must be today or later.';
+        valid = false;
+      }
+    }
+    setErrors(newErrors);
+    return valid;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!validate()) return;
     
     // Check if EmailJS is configured
     const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
@@ -198,6 +234,11 @@ const Contact = () => {
                       className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-accent-color transition-colors duration-300"
                       placeholder="Enter your phone number"
                     />
+                    {errors.phone && (
+                      <div className="mt-2 bg-red-500/90 text-white text-xs rounded px-3 py-2 animate-fade-in">
+                        {errors.phone}
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -214,6 +255,11 @@ const Contact = () => {
                     className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-accent-color transition-colors duration-300"
                     placeholder="Enter your email address"
                   />
+                  {errors.email && (
+                    <div className="mt-2 bg-red-500/90 text-white text-xs rounded px-3 py-2 animate-fade-in">
+                      {errors.email}
+                    </div>
+                  )}
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
@@ -226,8 +272,14 @@ const Contact = () => {
                       name="date"
                       value={formData.date}
                       onChange={handleInputChange}
+                      min={todayStr}
                       className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent-color transition-colors duration-300"
                     />
+                    {errors.date && (
+                      <div className="mt-2 bg-red-500/90 text-white text-xs rounded px-3 py-2 animate-fade-in">
+                        {errors.date}
+                      </div>
+                    )}
                   </div>
                   
                   <div>
