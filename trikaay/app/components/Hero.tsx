@@ -1,11 +1,38 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import CountUp from 'react-countup';
+import { ArrowUp } from 'lucide-react';
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
+
+  // Hero background images for carousel
+  const heroImages = [
+    {
+      src: '/images/Clinic_1.jpg',
+      alt: 'Clinic View 1',
+    },
+    {
+      src: '/images/Clinic_2.jpg',
+      alt: 'Clinic View 2',
+    },
+    {
+      src: '/images/Clinic_3.jpg',
+      alt: 'Clinic View 3',
+    },
+  ];
+  const [current, setCurrent] = useState(0);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  // Auto-slide effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % heroImages.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -25,21 +52,36 @@ const Hero = () => {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 200);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <>
       {/* Hero Section */}
       <section id="home" ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        {/* Background Image */}
+        {/* Background Image Carousel */}
         <div className="absolute inset-0 z-0">
+          {heroImages.map((img, idx) => (
+            <Image
+              key={img.src}
+              src={img.src}
+              alt={img.alt}
+              fill
+              className={`object-cover transition-opacity duration-1000 ${current === idx ? 'opacity-100' : 'opacity-0'}`}
+              priority={current === idx}
+            />
+          ))}
           <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-black/70 z-10"></div>
           <div className="absolute inset-0 bg-gradient-to-r from-accent-color/20 to-transparent z-20"></div>
-          <Image
-            src="/images/trikaay_logo.jpeg.jpg"
-            alt="Hero Background"
-            fill
-            className="object-cover"
-            priority
-          />
         </div>
 
         {/* Floating Elements */}
@@ -48,6 +90,17 @@ const Hero = () => {
           <div className="absolute top-40 right-20 w-32 h-32 bg-white/10 rounded-full blur-2xl animate-pulse delay-1000"></div>
           <div className="absolute bottom-40 left-20 w-16 h-16 bg-accent-color/30 rounded-full blur-lg animate-pulse delay-2000"></div>
         </div>
+
+        {/* Scroll to Top Button */}
+        {showScrollTop && (
+          <button
+            onClick={scrollToTop}
+            className="fixed bottom-8 right-8 z-50 bg-black text-white p-3 rounded-full shadow-lg hover:bg-yellow-600 transition-all duration-300 flex items-center justify-center animate-fade-in"
+            aria-label="Scroll to top"
+          >
+            <ArrowUp className="w-6 h-6" />
+          </button>
+        )}
 
         {/* Content */}
         <div className="container-custom relative z-40 text-center">
