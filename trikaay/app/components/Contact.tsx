@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import emailjs from 'emailjs-com';
+import { toast } from 'react-toastify';
 
 const Contact = () => {
   const contactRef = useRef<HTMLDivElement>(null);
@@ -17,12 +18,10 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    // Initialize EmailJS with environment variables (optional for now)
+    // Initialize EmailJS with environment variables
     const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
     if (publicKey) {
       emailjs.init(publicKey);
-    } else {
-      console.warn('EmailJS Public Key not found - form submission will be disabled');
     }
 
     const observer = new IntersectionObserver(
@@ -65,11 +64,6 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      // Debug: Log environment variables
-      console.log('Public Key:', publicKey);
-      console.log('Service ID:', serviceId);
-      console.log('Template ID:', templateId);
-      
       // EmailJS template parameters
       const templateParams = {
         user_name: formData.fullName,
@@ -81,12 +75,8 @@ const Contact = () => {
         reply_to: formData.email
       };
 
-      console.log('Template Params:', templateParams);
-
       // Send email using EmailJS
       const result = await emailjs.send(serviceId, templateId, templateParams);
-
-      console.log('EmailJS Result:', result);
 
       // Reset form
       setFormData({
@@ -98,10 +88,10 @@ const Contact = () => {
         message: ''
       });
       
-      alert('Thank you! Your consultation request has been submitted successfully.');
+      toast.success('Your consultation request was submitted!');
     } catch (error) {
       console.error('Email sending failed:', error);
-      alert('Sorry, there was an error sending your message. Please try again.');
+      toast.error('Failed to submit request.');
     } finally {
       setIsSubmitting(false);
     }
