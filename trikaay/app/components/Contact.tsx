@@ -29,12 +29,18 @@ const Contact = () => {
   const todayStr = new Date().toISOString().split('T')[0];
 
   useEffect(() => {
-    // Initialize EmailJS with environment variables
     const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-    if (publicKey) {
-      emailjs.init(publicKey);
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+  
+    if (!publicKey || !serviceId || !templateId) {
+      alert('EmailJS is not configured. Please check your environment variables.');
+      return;
     }
-
+  
+    // ✅ Initialize EmailJS — REQUIRED!
+    emailjs.init(publicKey);
+  
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -45,12 +51,13 @@ const Contact = () => {
       },
       { threshold: 0.1 }
     );
-
+  
     const elements = contactRef.current?.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
     elements?.forEach((el) => observer.observe(el));
-
+  
     return () => observer.disconnect();
   }, []);
+  
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
