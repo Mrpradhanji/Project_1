@@ -41,7 +41,7 @@ const Header = () => {
         <Link href="#home" className="flex items-center space-x-3">
           <div className="relative w-28 h-16 transition-all duration-300">
             <Image
-              src={isScrolled ? '/images/trikaay_logo_Black.png' : '/images/trikaay_logo_White.png'}
+              src={isScrolled ? '/images/trikaay_logo_black.png' : '/images/trikaay_logo_white.png'}
               alt="Trikaay Logo"
               fill
               className="object-contain"

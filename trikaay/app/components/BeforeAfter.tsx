@@ -28,7 +28,7 @@ const BeforeAfter = () => {
       icon: <Droplets className="w-8 h-8" />,
       color: 'bg-[#ffe0bd]',
       beforeImage: '/images/laser_therapy.jpg',
-      afterImage: '/images/after_laser_therapy.jpg',
+      afterImage: '/images/After_laser_Therapy.jpg',
       treatments: ['Facial Aesthetics', 'Laser Hair Removal', 'PRP Treatments', 'Dermal Fillers', 'Anti-wrinkle Injections'],
       testimonial: {
         text: 'I struggled with acne scars for years. After just 3 sessions of PRP treatment, my skin looks completely transformed. I feel confident again!',
