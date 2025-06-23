@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@mui/material": "^7.1.2",
@@ -21,7 +22,9 @@
     "next": "15.3.4",
     "react": "^19.0.0",
     "react-countup": "^6.5.3",
+    "react-datepicker": "^8.4.0",
     "react-dom": "^19.0.0",
+    "react-tailwindcss-datepicker": "^2.0.0",
     "react-toastify": "^11.0.5",
     "tailwind-merge": "^3.3.1"
   },

@@ -3,14 +3,14 @@
 import { useRef, useState } from 'react';
 import Image from 'next/image';
 import { motion, useInView, Variants } from 'framer-motion';
-import { Droplets, ScanLine, StretchHorizontal } from 'lucide-react';
+import { Droplets, ScanLine, StretchHorizontal, MessageCircle } from 'lucide-react';
 
 const imageVariants: Variants = {
   hidden: { width: '0%' },
   visible: {
     width: '100%',
     transition: {
-      duration: 1.2,
+      duration: 2,
       ease: 'easeInOut',
     },
   },
@@ -191,8 +191,8 @@ const BeforeAfter = () => {
             {/* Testimonial */}
             <div className="bg-gradient-to-br from-accent-color to-gray-600 rounded-xl p-6 text-white">
               <div className="flex items-start space-x-3 mb-4">
-                <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
-                  <span className="text-2xl">💬</span>
+                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
+                  <MessageCircle className="w-8 h-8 text-black" aria-hidden="true" />
                 </div>
                 <div>
                   <h4 className="font-playfair text-gray-900 text-xl font-bold mb-1">
@@ -223,12 +223,14 @@ const BeforeAfter = () => {
           <div className="text-center mt-16">
             <div className="bg-gradient-to-r from-gray-900 to-black rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
               <h3 className="font-playfair text-3xl md:text-4xl font-bold text-white mb-4">
-                Ready to See Your Transformation?
+                Ready to See <span className="gradient-text">Your Transformation?</span>
               </h3>
               <p className="font-inter text-xl text-white/90 mb-8">
                 Book your consultation today and start your journey to a more confident you.
               </p>
-             
+              <p className='text-white'>
+                Book <span className="gradient-text">Consultation</span>
+              </p>
             </div>
           </div>
         </div>

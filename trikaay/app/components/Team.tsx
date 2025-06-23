@@ -25,8 +25,8 @@ const Team = () => {
   }, []);
 
   const teamMembers = {
-    name: "Dr. Priya Sharma",
-    position: "Chief Medical Director",
+    name: "Dr. Priyanka Mehendiratta",
+    position: "Senior Consultant",
     specialization: "Homeopathy & Holistic Medicine",
     experience: "15+ Years",
     image: "/images/Doctor_Image.jpg",
@@ -134,7 +134,7 @@ const Team = () => {
         <div className="fade-in text-center mt-16">
           <div className="bg-gradient-to-r from-gray-900 to-black rounded-2xl p-8 md:p-12 text-white">
             <h3 className="font-playfair text-3xl md:text-4xl font-bold mb-4">
-              Ready to Meet Our Experts?
+              Ready to Meet <span className="gradient-text">Our Experts?</span>
             </h3>
             <p className="font-inter text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
               Schedule a consultation with our experienced team and discover how we can help you 

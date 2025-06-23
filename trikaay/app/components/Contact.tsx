@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import emailjs from 'emailjs-com';
 import { toast } from 'react-toastify';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const Contact = () => {
   const contactRef = useRef<HTMLDivElement>(null);
@@ -17,6 +19,7 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({
+    fullName: '',
     email: '',
     phone: '',
     date: '',
@@ -56,9 +59,35 @@ const Contact = () => {
     });
   };
 
+  // Add a helper to validate a single field
+  const validateField = (name: string, value: string) => {
+    let error = '';
+    if (name === 'fullName') {
+      if (!value.trim()) error = 'Full name is required.';
+      else if (value.trim().length < 2) error = 'Full name must be at least 2 characters.';
+    }
+    if (name === 'email') {
+      if (!value) error = 'Email is required.';
+      else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,}$/.test(value)) error = 'Please enter a valid email address.';
+    }
+    if (name === 'phone') {
+      if (!value) error = 'Phone number is required.';
+      else if (!/^\d{10}$/.test(value.replace(/\D/g, ''))) error = 'Phone number must be exactly 10 digits.';
+    }
+    if (name === 'date') {
+      if (!value) error = 'Please select a date.';
+      else {
+        const today = new Date(); today.setHours(0,0,0,0);
+        const selected = new Date(value);
+        if (selected < today) error = 'Date must be today or later.';
+      }
+    }
+    setErrors((prev) => ({ ...prev, [name]: error }));
+  };
+
   const validate = () => {
     let valid = true;
-    const newErrors = { email: '', phone: '', date: '' };
+    const newErrors = { fullName: '', email: '', phone: '', date: '' };
     // Email validation
     if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,}$/.test(formData.email)) {
       newErrors.email = 'Please enter a valid email address.';
@@ -200,9 +229,9 @@ const Contact = () => {
           {/* Contact Form */}
           <div className="slide-in-left">
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 flex flex-col min-h-[500px]">
-              <h3 className="font-playfair text-center text-2xl font-bold text-white mb-6">
-                Book Your <span className='text-yellow-600'>Consultation</span>
-              </h3>
+              <h2 className="font-playfair text-center text-3xl font-bold text-white mb-6">
+                Book Your <span className='text-yellow-500'>Consultation</span>
+              </h2>
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
@@ -216,10 +245,12 @@ const Contact = () => {
                       name="fullName"
                       value={formData.fullName}
                       onChange={handleInputChange}
+                      onBlur={(e) => validateField('fullName', e.target.value)}
                       required
-                      className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2 transition-colors duration-300"
+                      className={`w-full bg-white/10 border ${errors.fullName ? 'border-red-500' : 'border-white/20'} rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-600`}
                       placeholder="Enter your full name"
                     />
+                    {errors.fullName && <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>}
                   </div>
                   
                   <div>
@@ -232,15 +263,12 @@ const Contact = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
+                      onBlur={(e) => validateField('phone', e.target.value)}
                       required
-                      className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2 transition-colors duration-300"
+                      className={`w-full bg-white/10 border ${errors.phone ? 'border-red-500' : 'border-white/20'} rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-600`}
                       placeholder="Enter your number"
                     />
-                    {errors.phone && (
-                      <div className="mt-2 bg-red-500/90 text-white text-xs rounded px-3 py-2 animate-fade-in">
-                        {errors.phone}
-                      </div>
-                    )}
+                    {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
                   </div>
                 </div>
 
@@ -254,15 +282,12 @@ const Contact = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
+                    onBlur={(e) => validateField('email', e.target.value)}
                     required
-                    className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2 transition-colors duration-300"
+                    className={`w-full bg-white/10 border ${errors.email ? 'border-red-500' : 'border-white/20'} rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-600`}
                     placeholder="Enter your email address"
                   />
-                  {errors.email && (
-                    <div className="mt-2 bg-red-500/90 text-white text-xs rounded px-3 py-2 animate-fade-in">
-                      {errors.email}
-                    </div>
-                  )}
+                  {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
@@ -270,20 +295,20 @@ const Contact = () => {
                     <label htmlFor="date" className="block font-inter font-medium text-gray-300 mb-2">
                       Preferred Date
                     </label>
-                    <input
-                      id="date"
-                      type="date"
-                      name="date"
-                      value={formData.date}
-                      onChange={handleInputChange}
-                      min={todayStr}
-                      className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2 transition-colors duration-300"
+                    <DatePicker
+                      selected={formData.date ? new Date(formData.date) : null}
+                      onChange={(date: Date | null) => {
+                        const dateStr = date ? date.toISOString().split('T')[0] : '';
+                        setFormData({ ...formData, date: dateStr });
+                        validateField('date', dateStr);
+                      }}
+                      minDate={new Date(todayStr)}
+                      className={`w-full bg-white/10 border ${errors.date ? 'border-red-500' : 'border-white/20'} rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-600`}
+                      placeholderText="Select a date"
+                      dateFormat="yyyy-MM-dd"
+                      showPopperArrow={false}
                     />
-                    {errors.date && (
-                      <div className="mt-2 bg-red-500/90 text-white text-xs rounded px-3 py-2 animate-fade-in">
-                        {errors.date}
-                      </div>
-                    )}
+                    {errors.date && <p className="text-red-500 text-sm mt-1">{errors.date}</p>}
                   </div>
                   
                   <div>

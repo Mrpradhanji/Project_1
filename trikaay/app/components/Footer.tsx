@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="flex justify-center items-center space-x-6 mb-4">
           {/* Instagram Icon with Gradient on Hover */}
           <a
-            href="#"
+            href="https://www.instagram.com/lensteasers.kids?igsh=ZWVyc3ZpNHpjc2Ry"
             aria-label="Instagram"
             className="hover:text-[#E1306C] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2"
           >
@@ -19,7 +19,7 @@ const Footer = () => {
 
           {/* Facebook Icon */}
           <a
-            href="#"
+            href="https://www.facebook.com/lensteasersphotography/"
             aria-label="Facebook"
             className="hover:text-[#1877F3] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2"
           >
