@@ -65,7 +65,7 @@ const Hero = () => {
   };
 
   return (
-    <>
+    <main id="main-content">
       {/* Hero Section */}
       <section id="home" ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
         {/* Background Image Carousel */}
@@ -80,25 +80,25 @@ const Hero = () => {
               priority={current === idx}
             />
           ))}
-          <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-black/70 z-10"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-accent-color/20 to-transparent z-20"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-black/70 z-10" aria-hidden="true"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-accent-color/20 to-transparent z-20" aria-hidden="true"></div>
         </div>
 
         {/* Floating Elements */}
         <div className="absolute inset-0 z-30">
-          <div className="absolute top-20 left-10 w-20 h-20 bg-accent-color/20 rounded-full blur-xl animate-pulse"></div>
-          <div className="absolute top-40 right-20 w-32 h-32 bg-white/10 rounded-full blur-2xl animate-pulse delay-1000"></div>
-          <div className="absolute bottom-40 left-20 w-16 h-16 bg-accent-color/30 rounded-full blur-lg animate-pulse delay-2000"></div>
+          <div className="absolute top-20 left-10 w-20 h-20 bg-accent-color/20 rounded-full blur-xl animate-pulse" aria-hidden="true"></div>
+          <div className="absolute top-40 right-20 w-32 h-32 bg-white/10 rounded-full blur-2xl animate-pulse delay-1000" aria-hidden="true"></div>
+          <div className="absolute bottom-40 left-20 w-16 h-16 bg-accent-color/30 rounded-full blur-lg animate-pulse delay-2000" aria-hidden="true"></div>
         </div>
 
         {/* Scroll to Top Button */}
         {showScrollTop && (
           <button
             onClick={scrollToTop}
-            className="fixed bottom-8 right-8 z-50 bg-black text-white p-3 rounded-full shadow-lg hover:bg-yellow-600 transition-all duration-300 flex items-center justify-center animate-fade-in"
+            className="fixed bottom-8 right-8 z-50 bg-black text-white p-3 rounded-full shadow-lg hover:bg-yellow-600 transition-all duration-300 flex items-center justify-center animate-fade-in focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2"
             aria-label="Scroll to top"
           >
-            <ArrowUp className="w-6 h-6" />
+            <ArrowUp className="w-6 h-6" aria-hidden="true" focusable="false" />
           </button>
         )}
 
@@ -146,7 +146,7 @@ const Hero = () => {
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 };
 

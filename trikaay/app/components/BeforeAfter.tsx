@@ -32,7 +32,7 @@ const BeforeAfter = () => {
       treatments: ['Facial Aesthetics', 'Laser Hair Removal', 'PRP Treatments', 'Dermal Fillers', 'Anti-wrinkle Injections'],
       testimonial: {
         text: 'I struggled with acne scars for years. After just 3 sessions of PRP treatment, my skin looks completely transformed. I feel confident again!',
-        author: 'Sarah M., 24',
+        author: 'Miss Sujata, 26',
         treatment: 'PRP Treatment',
       },
     },
@@ -46,7 +46,7 @@ const BeforeAfter = () => {
       treatments: ['Laser Hair Removal', 'Radio Frequency', 'Fat Dissolving', 'Stretch Mark Treatment', 'Hyperhidrosis Treatment'],
       testimonial: {
         text: 'The laser hair removal treatment exceeded my expectations. Smooth, hair-free skin that lasts! Highly recommend.',
-        author: 'Michael R., 31',
+        author: 'Sneha Singh, 31',
         treatment: 'Laser Hair Removal',
       },
     },
@@ -60,7 +60,7 @@ const BeforeAfter = () => {
       treatments: ['Dermatology Consultation', 'IV Therapy', 'Chemical Peeling', 'Laser Resurfacing', 'Vascular Treatments'],
       testimonial: {
         text: 'The dermatology consultation and treatment plan completely cleared my skin issues. Professional care with amazing results!',
-        author: 'Emma L., 28',
+        author: 'Rashmika, 28',
         treatment: 'Dermatology Consultation',
       },
     },
@@ -71,6 +71,7 @@ const BeforeAfter = () => {
       id="before-after"
       ref={sectionRef}
       className="section-padding relative bg-gradient-to-br from-white to-gray-100 overflow-hidden py-20"
+      aria-label="Before and After Results"
     >
       <div className="container-custom relative z-10">
         {/* Header */}
@@ -90,13 +91,15 @@ const BeforeAfter = () => {
               <button
                 key={index}
                 onClick={() => setActiveService(index)}
-                className={`group px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center space-x-2 ${
+                className={`group px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center space-x-2 focus:outline-none focus:ring-2 focus:ring-accent-color focus:ring-offset-2 ${
                   activeService === index
                     ? 'bg-yellow-600 text-white'
                     : 'bg-gray-300 text-gray-900'
                 }`}
+                aria-label={service.title}
+                aria-pressed={activeService === index}
               >
-                <div>{service.icon}</div>
+                <div aria-hidden="true">{service.icon}</div>
                 <span className="font-inter font-medium text-sm hidden md:block">
                   {service.title.split(' ')[0]}
                 </span>

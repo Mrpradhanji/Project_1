@@ -80,11 +80,11 @@ const About = () => {
   ];
 
   return (
-    <section id="about" ref={aboutRef} className="section-padding bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+    <section id="about" ref={aboutRef} className="section-padding bg-gradient-to-br from-gray-50 to-white relative overflow-hidden" aria-label="About Trikaay Clinic">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-accent-color/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-accent-color/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-accent-color/5 rounded-full blur-3xl" aria-hidden="true"></div>
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-accent-color/10 rounded-full blur-3xl" aria-hidden="true"></div>
       </div>
 
       <div className="container-custom relative z-10">
@@ -93,8 +93,7 @@ const About = () => {
           <div className="space-y-8">
             <div className="fade-in">
               <h2 className="font-playfair text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                About{' '}
-                <span className="gradient-text">Trikaay</span>
+                About <span className="gradient-text">Trikaay</span>
               </h2>
               <div className="w-20 h-1 bg-accent-color rounded-full"></div>
             </div>
@@ -141,7 +140,7 @@ const About = () => {
 
             {/* CTA Button */}
             <div className="fade-in">
-              <button className="group bg-gray-300 text-gray-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+              <button className="group bg-gray-300 text-gray-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2">
                 <span className="flex items-center space-x-2">
                   <span>Learn More About Us</span>
                   <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -169,10 +168,11 @@ const About = () => {
                   <button
                     key={img.src}
                     onClick={() => setCurrent(idx)}
-                    className={`w-3 h-3 rounded-full border-2 border-white transition-all duration-300 ${
+                    className={`w-3 h-3 rounded-full border-2 border-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent-color focus:ring-offset-2 ${
                       current === idx ? 'bg-accent-color scale-125' : 'bg-white/60'
                     }`}
                     aria-label={`Go to slide ${idx + 1}`}
+                    aria-pressed={current === idx}
                   />
                 ))}
               </div>

@@ -98,8 +98,16 @@ const Services = () => {
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 w-full">
           {services.map((service, index) => (
-            <div key={index} className="slide-in-left group w-full">
-              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-white/10 transition-all duration-500 hover:bg-white/10 flex flex-col">
+            <div
+              key={index}
+              className="slide-in-left group w-full"
+              tabIndex={0}
+              role="region"
+              aria-label={service.title}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') e.currentTarget.click(); }}
+              style={{ outline: 'none' }}
+            >
+              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-white/10 transition-all duration-500 hover:bg-white/10 flex flex-col focus:outline-none focus:ring-2 focus:ring-accent-color focus:ring-offset-2">
                 {/* Service Header */}
                 <div className="text-center mb-6">
                   <div className="text-4xl mb-4">{service.icon}</div>

@@ -166,8 +166,8 @@ const Contact = () => {
         </svg>
       ),
       title: "Email Us",
-      details: "trikayahomeopathy@gmail.com",
-      link: "mailto:trikayahomeopathy@gmail.com",
+      details: "lenteasers@gmail.com",
+      link: "mailto:lenteasers@gmail.com",
       type: "email"
     }
   ];
@@ -201,38 +201,40 @@ const Contact = () => {
           <div className="slide-in-left">
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 flex flex-col min-h-[500px]">
               <h3 className="font-playfair text-center text-2xl font-bold text-white mb-6">
-                Book Your Consultation
+                Book Your <span className='text-yellow-600'>Consultation</span>
               </h3>
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block font-inter font-medium text-gray-300 mb-2">
+                    <label htmlFor="fullName" className="block font-inter font-medium text-gray-300 mb-2">
                       Full Name *
                     </label>
                     <input
+                      id="fullName"
                       type="text"
                       name="fullName"
                       value={formData.fullName}
                       onChange={handleInputChange}
                       required
-                      className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-accent-color transition-colors duration-300"
+                      className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2 transition-colors duration-300"
                       placeholder="Enter your full name"
                     />
                   </div>
                   
                   <div>
-                    <label className="block font-inter font-medium text-gray-300 mb-2">
+                    <label htmlFor="phone" className="block font-inter font-medium text-gray-300 mb-2">
                       Phone Number *
                     </label>
                     <input
+                      id="phone"
                       type="tel"
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
                       required
-                      className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-accent-color transition-colors duration-300"
-                      placeholder="Enter your phone number"
+                      className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2 transition-colors duration-300"
+                      placeholder="Enter your number"
                     />
                     {errors.phone && (
                       <div className="mt-2 bg-red-500/90 text-white text-xs rounded px-3 py-2 animate-fade-in">
@@ -243,16 +245,17 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label className="block font-inter font-medium text-gray-300 mb-2">
+                  <label htmlFor="email" className="block font-inter font-medium text-gray-300 mb-2">
                     Email Address *
                   </label>
                   <input
+                    id="email"
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-accent-color transition-colors duration-300"
+                    className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2 transition-colors duration-300"
                     placeholder="Enter your email address"
                   />
                   {errors.email && (
@@ -264,16 +267,17 @@ const Contact = () => {
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block font-inter font-medium text-gray-300 mb-2">
+                    <label htmlFor="date" className="block font-inter font-medium text-gray-300 mb-2">
                       Preferred Date
                     </label>
                     <input
+                      id="date"
                       type="date"
                       name="date"
                       value={formData.date}
                       onChange={handleInputChange}
                       min={todayStr}
-                      className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent-color transition-colors duration-300"
+                      className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2 transition-colors duration-300"
                     />
                     {errors.date && (
                       <div className="mt-2 bg-red-500/90 text-white text-xs rounded px-3 py-2 animate-fade-in">
@@ -283,29 +287,31 @@ const Contact = () => {
                   </div>
                   
                   <div>
-                    <label className="block font-inter font-medium text-gray-300 mb-2">
+                    <label htmlFor="time" className="block font-inter font-medium text-gray-300 mb-2">
                       Preferred Time
                     </label>
                     <input
+                      id="time"
                       type="time"
                       name="time"
                       value={formData.time}
                       onChange={handleInputChange}
-                      className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent-color transition-colors duration-300"
+                      className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2 transition-colors duration-300"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block font-inter font-medium text-gray-300 mb-2">
+                  <label htmlFor="message" className="block font-inter font-medium text-gray-300 mb-2">
                     Message
                   </label>
                   <textarea
+                    id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}
                     rows={4}
-                    className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-accent-color transition-colors duration-300 resize-none"
+                    className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2 transition-colors duration-300 resize-none"
                     placeholder="Tell us about your concerns or goals..."
                   ></textarea>
                 </div>
@@ -313,7 +319,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gray-300 text-black py-4 px-8 rounded-full font-semibold text-lg hover:bg-yellow-600 transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-gray-300 text-black py-4 px-8 rounded-full font-semibold text-lg hover:bg-yellow-600 transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2"
                 >
                   {isSubmitting ? (
                     <span className="flex items-center justify-center space-x-2">
@@ -376,9 +382,9 @@ const Contact = () => {
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.619502324454!2d77.37340887601667!3d28.64116388368785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfbf75094f5cd%3A0xdbe0e296258d838!2sLens%20Teasers%20Professional%20Baby%20and%20Maternity%20Photography%20Studio!5e0!3m2!1sen!2sin!4v1750594834911!5m2!1sen!2sin"
                 width="100%"
                 height="200"
-                style={{ border: 0, width: '100%', minHeight: '250px' }}
+                style={{ border: 0, width: '100%', minHeight: '240px' }}
                 allowFullScreen
-                title="Trikaay Clinic Location"
+                title="Lensteasers"
               ></iframe>
               <noscript>
                 <div className="p-4 text-center text-gray-700 bg-white rounded-b-2xl">

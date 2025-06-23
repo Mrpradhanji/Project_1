@@ -26,24 +26,31 @@ const Header = () => {
   ];
 
   return (
+    <>
+    <a
+      href="#main-content"
+      className="sr-only focus:not-sr-only absolute left-4 top-4 z-50 bg-yellow-600 text-white px-4 py-2 rounded shadow-lg transition-all duration-300"
+    >
+      Skip to main content
+    </a>
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
     }`}>
       <div className="flex items-center justify-between py-2 w-full px-4 lg:px-8">
         {/* Logo */}
         <Link href="#home" className="flex items-center space-x-3">
-          <div className="relative w-14 h-14">
+          <div className="relative w-28 h-16 transition-all duration-300">
             <Image
-              src="/images/trikaay_logo.jpeg.jpg"
+              src={isScrolled ? '/images/trikaay_logo_Black.png' : '/images/trikaay_logo_White.png'}
               alt="Trikaay Logo"
               fill
-              className="object-contain rounded-lg"
+              className="object-contain"
             />
           </div>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-8">
+        <nav className="hidden lg:flex items-center space-x-8" role="navigation" aria-label="Main navigation">
           {navItems.map((item) => (
             <Link
               key={item.name}
@@ -140,6 +147,7 @@ const Header = () => {
         </div>
       </div>
     </header>
+    </>
   );
 };
 
