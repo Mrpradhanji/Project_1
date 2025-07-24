@@ -20,7 +20,19 @@ const Header = () => {
   const navItems = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
+    {
+      name: 'Services',
+      href: '/services',
+      dropdown: [
+        { name: 'QR678 Hair Therapy', href: '/services/qr678-hair-therapy' },
+        { name: 'Medical-Grade Facials & Hydrafacials', href: '/services/facials' },
+        { name: 'Chemical Peels', href: '/services/chemical-peels' },
+        { name: 'Acne & Pigmentation Management', href: '/services/acne-pigmentation' },
+        { name: 'Anti-Aging Solutions', href: '/services/anti-aging' },
+        { name: 'Microneedling with PRP / Derma Pen', href: '/services/microneedling' },
+        { name: 'Under Eye & Lip Treatments', href: '/services/under-eye-lip' },
+      ]
+    },
     { name: 'Team', href: '#team' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -52,23 +64,55 @@ const Header = () => {
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center space-x-8" role="navigation" aria-label="Main navigation">
           {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className={`font-inter font-medium transition-all duration-300 relative group ${
-                isScrolled ? 'text-gray-700' : 'text-white'
-              }`}
-            >
-              <span className="relative">
-                {item.name}
-                <span
-                  className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
-                    isScrolled ? 'bg-accent-color' : 'bg-accent-color'
-                  }`}
-                ></span>
-              </span>
-              <span className="absolute -inset-1 bg-accent-color/10 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 -z-10"></span>
-            </Link>
+            item.dropdown ? (
+              <div key={item.name} className="relative group">
+                <Link
+                  href={item.href}
+                  className={`font-inter font-medium transition-all duration-300 relative group ${
+                    isScrolled ? 'text-gray-700' : 'text-white'
+                  } flex items-center`}
+                >
+                  <span className="relative">
+                    {item.name}
+                    <span
+                      className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
+                        isScrolled ? 'bg-accent-color' : 'bg-accent-color'
+                      }`}
+                    ></span>
+                  </span>
+                  <svg className="ml-1 w-4 h-4 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                </Link>
+                <div className="absolute left-0 mt-2 w-64 bg-white rounded-xl shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-300 z-50 py-2 border border-gray-200">
+                  {item.dropdown.map((drop) => (
+                    <Link
+                      key={drop.name}
+                      href={drop.href}
+                      className="block px-6 py-3 text-gray-700 hover:bg-accent-color/10 hover:text-accent-color font-inter text-base transition-all duration-200"
+                    >
+                      {drop.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`font-inter font-medium transition-all duration-300 relative group ${
+                  isScrolled ? 'text-gray-700' : 'text-white'
+                }`}
+              >
+                <span className="relative">
+                  {item.name}
+                  <span
+                    className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
+                      isScrolled ? 'bg-accent-color' : 'bg-accent-color'
+                    }`}
+                  ></span>
+                </span>
+                <span className="absolute -inset-1 bg-accent-color/10 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 -z-10"></span>
+              </Link>
+            )
           ))}
         </nav>
 
