@@ -1,16 +1,29 @@
-import React from 'react';
 import { CheckCircle } from 'lucide-react';
 import Image from 'next/image';
+import Footer from '../../components/Footer';
+import Typography from '@mui/material/Typography';
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Link from '@mui/material/Link';
 
 export default function MicroneedlingPage() {
   return (
-    <main className="min-h-screen gradient-bg py-0">
+    <main className="min-h-screen bg-white py-0">
+      {/* Breadcrumbs */}
+      <div className="py-4 flex justify-center">
+        <Breadcrumbs aria-label="breadcrumb">
+          <Link underline="hover" color="inherit" href="/">
+            Home
+          </Link>
+          <Typography color="text.primary">Services</Typography>
+          <Typography color="text.primary">Microneedling</Typography>
+        </Breadcrumbs>
+      </div>
       {/* Hero Section */}
-      <section className="relative flex flex-col md:flex-row items-center justify-between container-custom pt-16 pb-12 md:pb-20">
+      <section className="relative flex flex-col md:flex-row items-center justify-between w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12 md:pb-20">
         <div className="md:w-1/2 z-10">
-          <h1 className="font-playfair text-4xl md:text-5xl font-bold mb-4 gradient-text">Microneedling with PRP / Derma Pen</h1>
+          <h1 className="font-playfair text-4xl md:text-5xl font-bold mb-4 text-black">Microneedling with PRP / Derma Pen</h1>
           <div className="w-24 h-1 bg-[var(--accent-color)] rounded-full mb-6"></div>
-          <p className="mb-6 text-lg text-gray-100 max-w-xl">Experience advanced skin rejuvenation at Trikaay Aesthetics with our Microneedling treatments using PRP (Platelet-Rich Plasma) and Derma Pen technology. Restore your skin’s natural glow, reduce scars, and boost collagen with our dermatologist-recommended, FDA-approved procedures.</p>
+          <p className="mb-6 text-lg text-black max-w-xl">Experience advanced skin rejuvenation at Trikaay Aesthetics with our Microneedling treatments using PRP (Platelet-Rich Plasma) and Derma Pen technology. Restore your skin’s natural glow, reduce scars, and boost collagen with our dermatologist-recommended, FDA-approved procedures.</p>
         </div>
         <div className="md:w-1/2 flex justify-center mt-10 md:mt-0">
           <Image src="/images/After_Skin_Reden.jpeg" alt="Microneedling with PRP / Derma Pen" width={400} height={400} className="rounded-2xl shadow-2xl object-cover border-4 border-white" />
@@ -19,10 +32,10 @@ export default function MicroneedlingPage() {
       </section>
 
       {/* Details Section */}
-      <section className="container-custom bg-white/90 rounded-3xl shadow-xl px-6 py-10 md:py-16 md:px-16 -mt-10 relative z-10 mb-12">
-        <h2 className="text-2xl md:text-3xl font-semibold font-playfair mb-4 text-[var(--primary-color)]">What is Microneedling with PRP / Derma Pen?</h2>
+      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 -mt-10 mb-12">
+        <h2 className="text-2xl md:text-3xl font-semibold text-black mb-4">What is Microneedling with PRP / Derma Pen?</h2>
         <p className="mb-6 text-gray-700 text-lg">Microneedling is a minimally invasive skin treatment that uses fine needles to create micro-injuries in the skin, stimulating natural collagen and elastin production. At Trikaay Aesthetics, we enhance this process with PRP (your body’s own growth factors) or the advanced Derma Pen device for superior results. This treatment is ideal for reducing acne scars, open pores, fine lines, and improving overall skin texture and radiance.</p>
-        <h2 className="text-2xl md:text-3xl font-semibold font-playfair mb-4 text-[var(--primary-color)]">Why Choose Trikaay for Microneedling?</h2>
+        <h2 className="text-2xl md:text-3xl font-semibold text-black mb-4">Benefits of Microneedling</h2>
         <p className="mb-6 text-gray-700 text-lg">Our microneedling procedures are performed by expert dermatologists using FDA-approved equipment in a safe, clinical environment. We customize each session to your skin’s needs, ensuring visible, long-lasting improvements with minimal downtime. Trikaay Aesthetics is trusted for advanced skin rejuvenation in India.</p>
         <h3 className="text-xl font-semibold mt-8 mb-2 text-[var(--primary-color)]">Popular Microneedling Treatments at Trikaay:</h3>
         <ul className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2">
@@ -77,6 +90,7 @@ export default function MicroneedlingPage() {
           <a href="/contact" className="px-8 py-3 rounded-full bg-[var(--accent-color)] text-white font-semibold shadow-lg hover:bg-yellow-600 transition-all text-lg">⭐ Book Your Microneedling Session at Trikaay Today</a>
         </div>
       </section>
+      <Footer />
     </main>
   );
 } 

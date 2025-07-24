@@ -1,16 +1,29 @@
-import React from 'react';
 import { CheckCircle } from 'lucide-react';
 import Image from 'next/image';
+import Footer from '../../components/Footer';
+import Typography from '@mui/material/Typography';
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Link from '@mui/material/Link';
 
 export default function FacialsPage() {
   return (
-    <main className="min-h-screen gradient-bg py-0">
+    <main className="min-h-screen bg-white py-0">
+      {/* Breadcrumbs */}
+      <div className="py-4 flex justify-center">
+        <Breadcrumbs aria-label="breadcrumb">
+          <Link underline="hover" color="inherit" href="/">
+            Home
+          </Link>
+          <Typography color="text.primary">Services</Typography>
+          <Typography color="text.primary">Facials</Typography>
+        </Breadcrumbs>
+      </div>
       {/* Hero Section */}
-      <section className="relative flex flex-col md:flex-row items-center justify-between container-custom pt-16 pb-12 md:pb-20">
+      <section className="relative flex flex-col md:flex-row items-center justify-between w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12 md:pb-20">
         <div className="md:w-1/2 z-10">
-          <h1 className="font-playfair text-4xl md:text-5xl font-bold mb-4 gradient-text">Medical-Grade Facials & Hydrafacials</h1>
+          <h1 className="font-playfair text-4xl md:text-5xl font-bold mb-4 text-black">Medical-Grade Facials & Hydrafacials</h1>
           <div className="w-24 h-1 bg-[var(--accent-color)] rounded-full mb-6"></div>
-          <p className="mb-6 text-lg text-gray-100 max-w-xl">At Trikaay Aesthetics, we offer advanced skin treatments in India that go far beyond salon facials. Our Medical-Grade Facials and Hydrafacials are dermatologist-recommended skincare treatments designed to deeply cleanse, exfoliate, hydrate, and rejuvenate your skin using FDA-approved aesthetic technology. These treatments are customized to your unique skin concerns, ensuring safe, effective, and long-lasting results.</p>
+          <p className="mb-6 text-lg text-black max-w-xl">At Trikaay Aesthetics, we offer advanced skin treatments in India that go far beyond salon facials. Our Medical-Grade Facials and Hydrafacials are dermatologist-recommended skincare treatments designed to deeply cleanse, exfoliate, hydrate, and rejuvenate your skin using FDA-approved aesthetic technology. These treatments are customized to your unique skin concerns, ensuring safe, effective, and long-lasting results.</p>
         </div>
         <div className="md:w-1/2 flex justify-center mt-10 md:mt-0">
           <Image src="/images/Before.jpg" alt="Facials & Hydrafacials" width={400} height={400} className="rounded-2xl shadow-2xl object-cover border-4 border-white" />
@@ -19,10 +32,10 @@ export default function FacialsPage() {
       </section>
 
       {/* Details Section */}
-      <section className="container-custom bg-white/90 rounded-3xl shadow-xl px-6 py-10 md:py-16 md:px-16 -mt-10 relative z-10 mb-12">
-        <h2 className="text-2xl md:text-3xl font-semibold font-playfair mb-4 text-[var(--primary-color)]">What Are Trikaay’s Medical-Grade Facials & Hydrafacials?</h2>
+      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 -mt-10 mb-12">
+        <h2 className="text-2xl md:text-3xl font-semibold text-black mb-4">What Are Trikaay’s Medical-Grade Facials & Hydrafacials?</h2>
         <p className="mb-6 text-gray-700 text-lg">If you're dealing with acne, pigmentation, dull skin, open pores, or fine lines, Trikaay’s non-invasive facial treatments can help restore your natural glow. Our team of expert dermatologists uses the latest skincare innovations to deliver visible improvements with every session.</p>
-        <h2 className="text-2xl md:text-3xl font-semibold font-playfair mb-4 text-[var(--primary-color)]">Why Choose Trikaay for Hydrafacial & Medi-Facial Treatments?</h2>
+        <h2 className="text-2xl md:text-3xl font-semibold text-black mb-4">Our Facial Treatments</h2>
         <p className="mb-6 text-gray-700 text-lg">Unlike basic salon facials, Trikaay Aesthetics' facials are science-backed skin therapies performed under clinical supervision. Our Hydrafacial treatments in India use multi-step vortex technology to exfoliate dead skin cells, remove blackheads and whiteheads, and infuse the skin with potent booster serums for hydration and glow.</p>
         <p className="mb-6 text-gray-700 text-lg">We also offer custom medi-facials for acne-prone skin, hydrating facials for dry skin, and anti-aging facials with collagen-boosting actives. These facials are ideal for improving skin tone, texture, and elasticity, and are completely safe for sensitive Indian skin types.</p>
         <h3 className="text-xl font-semibold mt-8 mb-2 text-[var(--primary-color)]">Popular Medical Facials at Trikaay Aesthetics:</h3>
@@ -78,6 +91,7 @@ export default function FacialsPage() {
           <a href="/contact" className="px-8 py-3 rounded-full bg-[var(--accent-color)] text-white font-semibold shadow-lg hover:bg-yellow-600 transition-all text-lg">⭐ Book Your Medical-Grade Facial at Trikaay Today</a>
         </div>
       </section>
+      <Footer />
     </main>
   );
 } 

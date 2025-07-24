@@ -1,16 +1,29 @@
-import React from 'react';
 import { CheckCircle } from 'lucide-react';
 import Image from 'next/image';
+import Footer from '../../components/Footer';
+import Typography from '@mui/material/Typography';
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Link from '@mui/material/Link';
 
 export default function ChemicalPeelsPage() {
   return (
-    <main className="min-h-screen gradient-bg py-0">
+    <main className="min-h-screen bg-white py-0">
+      {/* Breadcrumbs */}
+      <div className="py-4 flex justify-center">
+        <Breadcrumbs aria-label="breadcrumb">
+          <Link underline="hover" color="inherit" href="/">
+            Home
+          </Link>
+          <Typography color="text.primary">Services</Typography>
+          <Typography color="text.primary">Chemical Peels</Typography>
+        </Breadcrumbs>
+      </div>
       {/* Hero Section */}
-      <section className="relative flex flex-col md:flex-row items-center justify-between container-custom pt-16 pb-12 md:pb-20">
+      <section className="relative flex flex-col md:flex-row items-center justify-between w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12 md:pb-20">
         <div className="md:w-1/2 z-10">
-          <h1 className="font-playfair text-4xl md:text-5xl font-bold mb-4 gradient-text">Advanced Chemical Peels</h1>
+          <h1 className="font-playfair text-4xl md:text-5xl font-bold mb-4 text-black">Advanced Chemical Peels</h1>
           <div className="w-24 h-1 bg-[var(--accent-color)] rounded-full mb-6"></div>
-          <p className="mb-6 text-lg text-gray-100 max-w-xl">
+          <p className="mb-6 text-lg text-black max-w-xl">
             At Trikaay Aesthetics, we offer safe, dermatologist-approved chemical peels in India to target acne, pigmentation, scars, and dull skin. Our peels are tailored to Indian skin types and delivered under clinical supervision for optimal results with minimal downtime.
           </p>
           <a href="/contact" className="inline-block mt-4 px-8 py-3 rounded-full bg-[var(--accent-color)] text-white font-semibold shadow-lg hover:bg-yellow-600 transition-all text-lg">
@@ -24,21 +37,21 @@ export default function ChemicalPeelsPage() {
       </section>
 
       {/* Content Section */}
-      <section className="container-custom bg-white/90 rounded-3xl shadow-xl px-6 py-10 md:py-16 md:px-16 -mt-10 relative z-10 mb-12">
+      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 -mt-10 mb-12">
         {/* Why Choose Us */}
-        <h2 className="text-2xl md:text-3xl font-semibold font-playfair mb-4 text-[var(--primary-color)]">Why Choose Trikaay Aesthetics for Chemical Peels?</h2>
+        <h2 className="text-2xl md:text-3xl font-semibold text-black mb-4">Why Choose Trikaay Aesthetics for Chemical Peels?</h2>
         <p className="mb-6 text-gray-700 text-lg">
           At Trikaay Aesthetics, we specialize in customized chemical peels designed to treat acne, pigmentation, melasma, dullness, and early signs of aging. Backed by medical expertise and tailored to Indian skin, our treatments offer noticeable improvements with minimal discomfort or downtime.
         </p>
 
         {/* Our Approach */}
-        <h3 className="text-xl font-semibold mt-8 mb-2 text-[var(--primary-color)]">How Our Peels Work</h3>
+        <h3 className="text-xl font-semibold mt-8 mb-2 text-black">How Our Peels Work</h3>
         <p className="mb-6 text-gray-700 text-lg">
           Chemical peels use active ingredients to exfoliate the skin, accelerate cell turnover, and stimulate collagen production. The result? Clearer, brighter, and more even-toned skin. Whether you’re new to peels or seeking advanced pigmentation correction, our experts curate the ideal protocol for you.
         </p>
 
         {/* Popular Peels */}
-        <h3 className="text-xl font-semibold mt-8 mb-4 text-[var(--primary-color)]">Popular Peels We Offer:</h3>
+        <h3 className="text-xl font-semibold mt-8 mb-4 text-black">Popular Peels We Offer:</h3>
         <div className="space-y-6 text-gray-800 text-lg">
           <div><strong className="text-[var(--accent-color)]">Glycolic Peel:</strong> Ideal for glow and texture refinement.</div>
           <div><strong className="text-[var(--accent-color)]">Lactic Peel:</strong> Suited for dull, dry or sensitive skin types.</div>
@@ -48,7 +61,7 @@ export default function ChemicalPeelsPage() {
         </div>
 
         {/* Key Benefits */}
-        <h3 className="text-xl font-semibold mt-10 mb-2 text-[var(--primary-color)]">Key Features & Benefits:</h3>
+        <h3 className="text-xl font-semibold mt-10 mb-2 text-black">Key Features & Benefits:</h3>
         <ul className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2">
           {[
             'Dermatologically formulated and tested',
@@ -66,7 +79,7 @@ export default function ChemicalPeelsPage() {
         </ul>
 
         {/* Skin Concerns */}
-        <h3 className="text-xl font-semibold mt-10 mb-2 text-[var(--primary-color)]">Skin Concerns We Address</h3>
+        <h3 className="text-xl font-semibold mt-10 mb-2 text-black">Skin Concerns We Address</h3>
         <ul className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-gray-800 text-lg">
           {[
             'Acne & acne scars',
@@ -84,16 +97,16 @@ export default function ChemicalPeelsPage() {
         </ul>
 
         {/* Pre & Post Care */}
-        <h3 className="text-xl font-semibold mt-8 mb-2 text-[var(--primary-color)]">Pre & Post Care Instructions</h3>
+        <h3 className="text-xl font-semibold mt-8 mb-2 text-black">Pre & Post Care Instructions</h3>
         <div className="mb-6">
-          <h4 className="font-semibold text-lg mb-1 text-[var(--primary-color)]">Before Your Session:</h4>
+          <h4 className="font-semibold text-lg mb-1 text-black">Before Your Session:</h4>
           <ul className="list-disc ml-6 text-gray-700 text-base mb-2">
             <li>Discontinue use of AHAs, BHAs, or retinoids 3–5 days prior</li>
             <li>Use gentle, non-active cleansers</li>
             <li>Stay hydrated and avoid excessive sun exposure</li>
           </ul>
 
-          <h4 className="font-semibold text-lg mb-1 text-[var(--primary-color)]">After Your Session:</h4>
+          <h4 className="font-semibold text-lg mb-1 text-black">After Your Session:</h4>
           <ul className="list-disc ml-6 text-gray-700 text-base">
             <li>Apply sunscreen as advised</li>
             <li>Avoid makeup and exfoliation for 24–48 hours</li>
@@ -114,6 +127,7 @@ export default function ChemicalPeelsPage() {
           </a>
         </div>
       </section>
+      <Footer />
     </main>
   );
 }

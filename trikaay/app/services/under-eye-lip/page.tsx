@@ -1,16 +1,29 @@
-import React from 'react';
 import { CheckCircle } from 'lucide-react';
 import Image from 'next/image';
+import Footer from '../../components/Footer';
+import Typography from '@mui/material/Typography';
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Link from '@mui/material/Link';
 
 export default function UnderEyeLipPage() {
   return (
-    <main className="min-h-screen gradient-bg py-0">
+    <main className="min-h-screen bg-white py-0">
+      {/* Breadcrumbs */}
+      <div className="py-4 flex justify-center">
+        <Breadcrumbs aria-label="breadcrumb">
+          <Link underline="hover" color="inherit" href="/">
+            Home
+          </Link>
+          <Typography color="text.primary">Services</Typography>
+          <Typography color="text.primary">Under Eye & Lip</Typography>
+        </Breadcrumbs>
+      </div>
       {/* Hero Section */}
-      <section className="relative flex flex-col md:flex-row items-center justify-between container-custom pt-16 pb-12 md:pb-20">
+      <section className="relative flex flex-col md:flex-row items-center justify-between w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12 md:pb-20">
         <div className="md:w-1/2 z-10">
-          <h1 className="font-playfair text-4xl md:text-5xl font-bold mb-4 gradient-text">Under Eye & Lip Treatments</h1>
+          <h1 className="font-playfair text-4xl md:text-5xl font-bold mb-4 text-black">Under Eye & Lip Treatments</h1>
           <div className="w-24 h-1 bg-[var(--accent-color)] rounded-full mb-6"></div>
-          <p className="mb-6 text-lg text-gray-100 max-w-xl">Revitalize your delicate under-eye and lip areas with advanced, dermatologist-recommended treatments at Trikaay Aesthetics. Target dark circles, fine lines, puffiness, and lip dullness with our FDA-approved, clinically proven solutions for brighter, smoother, and more youthful skin.</p>
+          <p className="mb-6 text-lg text-black max-w-xl">Revitalize your delicate under-eye and lip areas with advanced, dermatologist-recommended treatments at Trikaay Aesthetics. Target dark circles, fine lines, puffiness, and lip dullness with our FDA-approved, clinically proven solutions for brighter, smoother, and more youthful skin.</p>
         </div>
         <div className="md:w-1/2 flex justify-center mt-10 md:mt-0">
           <Image src="/images/Clinic_2.jpg" alt="Under Eye & Lip Treatments" width={400} height={400} className="rounded-2xl shadow-2xl object-cover border-4 border-white" />
@@ -19,10 +32,10 @@ export default function UnderEyeLipPage() {
       </section>
 
       {/* Details Section */}
-      <section className="container-custom bg-white/90 rounded-3xl shadow-xl px-6 py-10 md:py-16 md:px-16 -mt-10 relative z-10 mb-12">
-        <h2 className="text-2xl md:text-3xl font-semibold font-playfair mb-4 text-[var(--primary-color)]">What Are Under Eye & Lip Treatments?</h2>
+      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 -mt-10 mb-12">
+        <h2 className="text-2xl md:text-3xl font-semibold text-black mb-4">What Are Under Eye & Lip Treatments?</h2>
         <p className="mb-6 text-gray-700 text-lg">Trikaay Aesthetics offers specialized under eye and lip treatments designed to address common concerns like dark circles, puffiness, fine lines, and lip pigmentation. Using advanced techniques and medical-grade products, our dermatologists help you achieve a refreshed, youthful look safely and effectively.</p>
-        <h2 className="text-2xl md:text-3xl font-semibold font-playfair mb-4 text-[var(--primary-color)]">Why Choose Trikaay for Under Eye & Lip Care?</h2>
+        <h2 className="text-2xl md:text-3xl font-semibold text-black mb-4">Our Under Eye & Lip Solutions</h2>
         <p className="mb-6 text-gray-700 text-lg">Our treatments are performed by expert dermatologists using FDA-approved technology and protocols. Each session is tailored to your unique skin type and concern, ensuring visible, long-lasting results with minimal discomfort. Trikaay Aesthetics is a trusted name for advanced facial rejuvenation in India.</p>
         <h3 className="text-xl font-semibold mt-8 mb-2 text-[var(--primary-color)]">Popular Under Eye & Lip Treatments at Trikaay:</h3>
         <ul className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2">
@@ -77,6 +90,7 @@ export default function UnderEyeLipPage() {
           <a href="/contact" className="px-8 py-3 rounded-full bg-[var(--accent-color)] text-white font-semibold shadow-lg hover:bg-yellow-600 transition-all text-lg">⭐ Book Your Under Eye & Lip Treatment at Trikaay Today</a>
         </div>
       </section>
+      <Footer />
     </main>
   );
 } 
