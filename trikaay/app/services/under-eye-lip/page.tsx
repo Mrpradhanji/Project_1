@@ -4,6 +4,7 @@ import Footer from '../../components/Footer';
 import Typography from '@mui/material/Typography';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
+import ServiceHero from '../../components/ServiceHero';
 
 export default function UnderEyeLipPage() {
   return (
@@ -19,18 +20,14 @@ export default function UnderEyeLipPage() {
         </Breadcrumbs>
       </div>
       {/* Hero Section */}
-      <section className="relative flex flex-col md:flex-row items-center justify-between w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12 md:pb-20">
-        <div className="md:w-1/2 z-10">
-          <h1 className="font-playfair text-4xl md:text-5xl font-bold mb-4 text-black">Under Eye & Lip Treatments</h1>
-          <div className="w-24 h-1 bg-[var(--accent-color)] rounded-full mb-6"></div>
-          <p className="mb-6 text-lg text-black max-w-xl">Revitalize your delicate under-eye and lip areas with advanced, dermatologist-recommended treatments at Trikaay Aesthetics. Target dark circles, fine lines, puffiness, and lip dullness with our FDA-approved, clinically proven solutions for brighter, smoother, and more youthful skin.</p>
-        </div>
-        <div className="md:w-1/2 flex justify-center mt-10 md:mt-0">
-          <Image src="/images/Clinic_2.jpg" alt="Under Eye & Lip Treatments" width={400} height={400} className="rounded-2xl shadow-2xl object-cover border-4 border-white" />
-        </div>
-        <div className="absolute -top-20 -right-20 w-96 h-96 bg-[var(--accent-color)] opacity-20 rounded-full blur-3xl z-0"></div>
-      </section>
-
+      <ServiceHero
+        title="Under Eye & Lip Treatments"
+        description="Revitalize your delicate under-eye and lip areas with advanced, dermatologist-recommended treatments at Trikaay Aesthetics. Target dark circles, fine lines, puffiness, and lip dullness with our FDA-approved, clinically proven solutions for brighter, smoother, and more youthful skin."
+        imageSrc="/images/undereye.jpg"
+        imageAlt="Under Eye & Lip Treatments"
+        ctaText="Book Consultation"
+        ctaHref="/contact"
+      />
       {/* Details Section */}
       <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 -mt-10 mb-12">
         <h2 className="text-2xl md:text-3xl font-semibold text-black mb-4">What Are Under Eye & Lip Treatments?</h2>

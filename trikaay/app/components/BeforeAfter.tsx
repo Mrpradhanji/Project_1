@@ -43,11 +43,11 @@ const BeforeAfter = () => {
       color: 'bg-[#3b82f6]',
       beforeImage: '/images/Before.jpg',
       afterImage: '/images/After.jpg',
-      treatments: ['Laser Hair Removal', 'Radio Frequency', 'Fat Dissolving', 'Stretch Mark Treatment', 'Hyperhidrosis Treatment'],
+      treatments: ['Body Treatment', 'Radio Frequency', 'Fat Dissolving', 'Stretch Mark Treatment', 'Hyperhidrosis Treatment'],
       testimonial: {
-        text: 'The laser hair removal treatment exceeded my expectations. Smooth, hair-free skin that lasts! Highly recommend.',
+        text: 'The body treatment exceeded my expectations. Smooth, hair-free skin that lasts! Highly recommend.',
         author: 'Sneha Singh, 31',
-        treatment: 'Laser Hair Removal',
+        treatment: 'Body Treatment',
       },
     },
     {
@@ -55,8 +55,8 @@ const BeforeAfter = () => {
       description: 'Expert dermatological care and wellness solutions for optimal health',
       icon: <StretchHorizontal className="w-8 h-8" />,
       color: 'from-teal-500 to-emerald-500',
-      beforeImage: '/images/Skin_Reden.jpeg',
-      afterImage: '/images/After_Skin_Reden.jpeg',
+      beforeImage: '/images/before_dermatalogy.png',
+      afterImage: '/images/after_dermatalogy.png',
       treatments: ['Dermatology Consultation', 'IV Therapy', 'Chemical Peeling', 'Laser Resurfacing', 'Vascular Treatments'],
       testimonial: {
         text: 'The dermatology consultation and treatment plan completely cleared my skin issues. Professional care with amazing results!',

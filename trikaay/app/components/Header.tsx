@@ -22,7 +22,7 @@ const Header = () => {
     { name: 'About', href: '#about' },
     {
       name: 'Services',
-      href: '/services',
+      href: '#home',
       dropdown: [
         { name: 'QR678 Hair Therapy', href: '/services/qr678-hair-therapy' },
         { name: 'Medical-Grade Facials & Hydrafacials', href: '/services/facials' },
@@ -31,10 +31,13 @@ const Header = () => {
         { name: 'Anti-Aging Solutions', href: '/services/anti-aging' },
         { name: 'Microneedling with PRP / Derma Pen', href: '/services/microneedling' },
         { name: 'Under Eye & Lip Treatments', href: '/services/under-eye-lip' },
+        {name :'Growth Factor Concentrate', href: '/services/gfc'}
       ]
     },
     { name: 'Team', href: '#team' },
+    { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '#contact' },
+    
   ];
 
   return (

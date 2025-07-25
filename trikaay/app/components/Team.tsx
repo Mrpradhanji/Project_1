@@ -29,9 +29,24 @@ const Team = () => {
     position: "Senior Consultant",
     specialization: "Homeopathy & Holistic Medicine",
     experience: "15+ Years",
-    image: "/images/Doctor_Image.jpg",
-    description: "Dr Priyanka is a Senior Consultant at Trikaay Homoeopathy Clinic. She is one of the best homeopathic doctors. She has more than 15 years of Clinical experience and got her education from a premier institution in India. Her credentials are accredited by CCRH, New Delhi. She has worked with reputed hospitals like Oswal Cancer Hospital Ludhiana, Lifeline hospital, Sri Guru Nanak Dev Homoeopathic Medical College & Hospital.Trikaay Homoeopathy Clinic has been helping people of Delhi NCR and surrounding areas for the last so many years with various medical problems using German homeopathic treatment philosophy",
-    certifications: ["BHMS", "MD (Gold Medalist)"],
+    image: "/images/Doctor.jpeg",
+    description: `Dr. Priyanka Mehendiratta is a distinguished name in the field of holistic and aesthetic medicine. A Gold Medalist in MD (Homoeopathy) and a graduate of BHMS, she brings a rare blend of clinical brilliance, compassionate care, and aesthetic sensibility to her patients. With an advanced Fellowship in Medical Cosmetology, she bridges the gap between internal healing and external transformation.
+At the heart of her practice lies a simple but powerful philosophy: treat the root, not just the symptoms; enhance confidence, not just appearance.
+She is deeply trusted for her expertise in:
+
+🔹 Chronic and lifestyle disorders
+🔹 Hormonal and autoimmune conditions
+🔹 Skin and hair restoration
+🔹 Non-surgical aesthetic procedures
+
+With a calm presence and a deep understanding of every patient’s individuality, Dr. Mehendiratta crafts personalized, result-driven treatment plans rooted in science, empathy, and integrity.
+
+“Healing is more than medicine. It’s listening, understanding, and guiding someone back to their healthiest, most radiant self.”
+
+Whether you’re seeking natural relief from chronic conditions or safe, non-invasive solutions for glowing skin and youthful confidence—you’re in expert hands.
+
+At her clinic, science meets soul, and wellness meets beauty—naturally.`,
+    certificationsAndAchievements: ["BHMS", "MD (Gold Medalist)", "Fellowship in Medical Cosmetology","Founder","Holistic Healer","Aesthetic Wellness Expert"],
     achievements: ["5000+ Successful Cases", "Award-Winning Practitioner", "Published Research Papers"]
   };
   
@@ -102,9 +117,9 @@ const Team = () => {
 
                 {/* Certifications */}
                 <div className="mb-6">
-                  <h4 className="font-inter font-semibold text-gray-900 mb-3">Certifications</h4>
+                  <h4 className="font-inter font-semibold text-gray-900 mb-3">Certifications & Achievements</h4>
                   <div className="space-y-2">
-                    {teamMembers.certifications.map((cert, index) => (
+                    {teamMembers.certificationsAndAchievements.map((cert, index) => (
                       <div key={index} className="flex items-center space-x-3">
                         <div className="w-2 h-2 bg-accent-color rounded-full"></div>
                         <span className="font-inter text-gray-900">{cert}</span>

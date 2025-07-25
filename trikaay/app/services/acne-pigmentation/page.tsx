@@ -4,6 +4,7 @@ import Footer from '../../components/Footer';
 import Typography from '@mui/material/Typography';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
+import ServiceHero from '../../components/ServiceHero';
 
 export default function AcnePigmentationPage() {
   return (
@@ -19,19 +20,14 @@ export default function AcnePigmentationPage() {
         </Breadcrumbs>
       </div>
       {/* Hero Section */}
-      <section className="relative flex flex-col md:flex-row items-center justify-between w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12 md:pb-20">
-        <div className="md:w-1/2 z-10">
-          <h1 className="font-playfair text-4xl md:text-5xl font-bold mb-4 text-black">Acne & Pigmentation Management</h1>
-          <div className="w-24 h-1 bg-[var(--accent-color)] rounded-full mb-6"></div>
-          <p className="mb-6 text-lg text-black max-w-xl">Say goodbye to stubborn acne and pigmentation with our holistic, expert-led treatments at Trikaay Aesthetics.</p>
-          <a href="/contact" className="inline-block mt-4 px-8 py-3 rounded-full bg-[var(--accent-color)] text-white font-semibold shadow-lg hover:bg-yellow-600 transition-all text-lg">Book Consultation</a>
-        </div>
-        <div className="md:w-1/2 flex justify-center mt-10 md:mt-0">
-          <Image src="/images/After.jpg" alt="Acne & Pigmentation" width={400} height={400} className="rounded-2xl shadow-2xl object-cover border-4 border-white" />
-        </div>
-        <div className="absolute -top-20 -right-20 w-96 h-96 bg-[var(--accent-color)] opacity-20 rounded-full blur-3xl z-0"></div>
-      </section>
-
+      <ServiceHero
+        title="Acne & Pigmentation Management"
+        description="Say goodbye to stubborn acne and pigmentation with our holistic, expert-led treatments at Trikaay Aesthetics."
+        imageSrc="/images/acne-pigmentation.jpg"
+        imageAlt="Acne & Pigmentation Management"
+        ctaText="Book Consultation"
+        ctaHref="/contact"
+      />
       {/* Details Section */}
       <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 -mt-10 mb-12">
         {/* Features */}

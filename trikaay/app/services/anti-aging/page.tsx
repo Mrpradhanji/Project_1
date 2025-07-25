@@ -4,6 +4,7 @@ import Footer from '../../components/Footer';
 import Typography from '@mui/material/Typography';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
+import ServiceHero from '../../components/ServiceHero';
 
 export default function AntiAgingPage() {
   return (
@@ -19,18 +20,14 @@ export default function AntiAgingPage() {
         </Breadcrumbs>
       </div>
       {/* Hero Section */}
-      <section className="relative flex flex-col md:flex-row items-center justify-between w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12 md:pb-20">
-        <div className="md:w-1/2 z-10">
-          <h1 className="font-playfair text-4xl md:text-5xl font-bold mb-4 text-black">Anti-Aging Solutions</h1>
-          <div className="w-24 h-1 bg-[var(--accent-color)] rounded-full mb-6"></div>
-          <p className="mb-6 text-lg text-black max-w-xl">Rediscover youthful, radiant skin with Trikaay Aesthetics’ advanced anti-aging treatments. Our dermatologist-recommended, FDA-approved solutions target fine lines, wrinkles, sagging, and loss of elasticity for visibly firmer, smoother, and rejuvenated skin.</p>
-        </div>
-        <div className="md:w-1/2 flex justify-center mt-10 md:mt-0">
-          <Image src="/images/Doctor_Image.jpg" alt="Anti-Aging Solutions" width={400} height={400} className="rounded-2xl shadow-2xl object-cover border-4 border-white" />
-        </div>
-        <div className="absolute -top-20 -right-20 w-96 h-96 bg-[var(--accent-color)] opacity-20 rounded-full blur-3xl z-0"></div>
-      </section>
-
+      <ServiceHero
+        title="Anti-Aging Solutions"
+        description="Rediscover youthful, radiant skin with Trikaay Aesthetics’ advanced anti-aging treatments. Our dermatologist-recommended, FDA-approved solutions target fine lines, wrinkles, sagging, and loss of elasticity for visibly firmer, smoother, and rejuvenated skin."
+        imageSrc="/images/anti-aging.jpg"
+        imageAlt="Anti-Aging Solutions"
+        ctaText="Book Consultation"
+        ctaHref="/contact"
+      />
       {/* Details Section */}
       <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 -mt-10 mb-12">
         <h2 className="text-2xl md:text-3xl font-semibold text-black mb-4">What Are Anti-Aging Solutions?</h2>
