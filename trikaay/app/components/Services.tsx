@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Droplets, ScanLine, StretchHorizontal } from 'lucide-react';
 
 const Services = () => {
@@ -31,43 +32,58 @@ const Services = () => {
       description: "Gentle facials, peels, and hydrating care to restore your natural skin glow.",
       icon: <Droplets className="w-10 h-10 text-[#ffe0bd]" />,
       features: [
-        "Specialist facial aesthetics",
-        "Laser Hair Removal",
-        "PRP treatments",
-        "Dermal Fillers",
-        "Skin Boosters",
-        "Anti-wrinkle injections"
+        "Medical-Grade Facials & Hydrafacials",
+        "Chemical Peels",
+        "Anti-Aging Solutions",
+        "Acne & Pigmentation Management",
+        "Under Eye & Lip Treatments",
+        "Microneedling with PRP"
       ],
       image: "/images/Body_Skin.jpg",
-      color: ""
+      primaryLink: "/services/facials",
+      secondaryLinks: [
+        { name: "Chemical Peels", href: "/services/chemical-peels" },
+        { name: "Anti-Aging", href: "/services/anti-aging" },
+        { name: "Acne & Pigmentation", href: "/services/acne-pigmentation" }
+      ]
     },
     {
-      title: "Body Treatments",
-      description: "Comprehensive body sculpting and wellness treatments for your complete transformation.",
+      title: "Hair Restoration",
+      description: "Advanced hair growth therapies and treatments for natural hair regrowth.",
       icon: <ScanLine className="w-10 h-10 text-[#3b82f6]" />,
       features: [
-        "Laser Hair Removal",
-        "Radio Frequency treatments",
-        "PRP for scarring",
-        "Fat dissolving",
-        "Stretch mark treatments",
-        "Hyperhidrosis treatment"
+        "QR678 Hair Growth Therapy",
+        "Growth Factor Concentrate (GFC)",
+        "PRP Hair Treatments",
+        "Scalp Microneedling",
+        "Hair Loss Consultation",
+        "Hair Density Improvement"
       ],
       image: "/images/AdvancedSkin_Rend.jpg",
+      primaryLink: "/services/qr678-hair-therapy",
+      secondaryLinks: [
+        { name: "GFC Therapy", href: "/services/gfc" },
+        { name: "Microneedling", href: "/services/microneedling" }
+      ]
     },
     {
       title: "Dermatology & Wellness",
       description: "Expert dermatological care and wellness solutions for optimal health and beauty.",
       icon: <StretchHorizontal className="w-10 h-10 text-[#10b981]" />,
       features: [
-        "Dermatology consultation",
-        "IV therapy",
-        "Chemical peeling",
-        "Laser resurfacing",
-        "Vascular treatments",
-        "Pigmented laser treatments"
+        "Comprehensive Skin Consultation",
+        "Medical-Grade Treatments",
+        "Holistic Wellness Approach",
+        "Customized Treatment Plans",
+        "Advanced Technology",
+        "Expert Dermatological Care"
       ],
       image: "/images/Dermatology.jpg",
+      primaryLink: "/services/anti-aging",
+      secondaryLinks: [
+        { name: "Under Eye & Lip", href: "/services/under-eye-lip" },
+        { name: "Microneedling", href: "/services/microneedling" }
+      ]
     }
   ];
 
@@ -96,7 +112,7 @@ const Services = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 w-full mb-12">
           {services.map((service, index) => (
             <div
               key={index}
@@ -131,7 +147,7 @@ const Services = () => {
                 </div>
 
                 {/* Features List */}
-                <div className="space-y-3 flex-grow">
+                <div className="space-y-3 flex-grow mb-6">
                   <h4 className="font-inter font-semibold text-white mb-4 text-sm lg:text-base">Our treatments include:</h4>
                   {service.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-center space-x-3">
@@ -140,9 +156,40 @@ const Services = () => {
                     </div>
                   ))}
                 </div>
+
+                {/* Service Links */}
+                <div className="space-y-3">
+                  <Link 
+                    href={service.primaryLink}
+                    className="block w-full bg-accent-color text-black font-semibold py-3 px-6 rounded-lg text-center hover:bg-yellow-600 transition-all duration-300"
+                  >
+                    Learn More
+                  </Link>
+                  <div className="flex flex-wrap gap-2">
+                    {service.secondaryLinks.map((link, linkIndex) => (
+                      <Link
+                        key={linkIndex}
+                        href={link.href}
+                        className="text-accent-color text-sm hover:underline"
+                      >
+                        {link.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* View All Services CTA */}
+        <div className="text-center fade-in">
+          <Link 
+            href="/services"
+            className="inline-block bg-white text-gray-900 font-semibold py-4 px-8 rounded-full hover:bg-accent-color hover:text-black transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+          >
+            View All Services
+          </Link>
         </div>
       </div>
     </section>
