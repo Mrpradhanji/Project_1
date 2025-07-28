@@ -1,0 +1,4 @@
+This is a placeholder for the hero image.
+Please replace this file with your actual hero image named 'hero-1920.jpg'.
+Recommended dimensions: 1920x1080px
+File size should be optimized for web (under 300KB if possible).

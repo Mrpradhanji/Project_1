@@ -1,0 +1,4 @@
+This is a placeholder for the Apple touch icon.
+Please replace this file with your actual icon named 'apple-touch-icon.png'.
+Recommended dimensions: 180x180px
+File format: PNG with transparency
