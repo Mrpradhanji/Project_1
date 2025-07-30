@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import CountUp from 'react-countup';
-import { ArrowUp } from 'lucide-react';
+import { ArrowUp, PhoneCall } from 'lucide-react';
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -100,6 +100,19 @@ const Hero = () => {
           >
             <ArrowUp className="w-6 h-6" aria-hidden="true" focusable="false" />
           </button>
+        )}
+
+        {/* WhatsApp Button (using PhoneCall icon as alternative) */}
+        {showScrollTop && (
+          <a
+            href="https://wa.me/919999999999" // Replace with your WhatsApp number
+            target="_blank"
+            rel="noopener noreferrer"
+            className="fixed bottom-24 right-8 z-50 bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 flex items-center justify-center animate-fade-in focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2"
+            aria-label="Chat on WhatsApp"
+          >
+            <PhoneCall className="w-6 h-6" aria-hidden="true" focusable="false" />
+          </a>
         )}
 
         {/* Content */}
