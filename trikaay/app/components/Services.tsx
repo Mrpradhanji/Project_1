@@ -41,11 +41,6 @@ const Services = () => {
       ],
       image: "/images/Body_Skin.jpg",
       primaryLink: "/services/facials",
-      secondaryLinks: [
-        { name: "Chemical Peels", href: "/services/chemical-peels" },
-        { name: "Anti-Aging", href: "/services/anti-aging" },
-        { name: "Acne & Pigmentation", href: "/services/acne-pigmentation" }
-      ]
     },
     {
       title: "Hair Restoration",
@@ -61,10 +56,7 @@ const Services = () => {
       ],
       image: "/images/AdvancedSkin_Rend.jpg",
       primaryLink: "/services/qr678-hair-therapy",
-      secondaryLinks: [
-        { name: "GFC Therapy", href: "/services/gfc" },
-        { name: "Microneedling", href: "/services/microneedling" }
-      ]
+
     },
     {
       title: "Dermatology & Wellness",
@@ -80,10 +72,7 @@ const Services = () => {
       ],
       image: "/images/Dermatology.jpg",
       primaryLink: "/services/anti-aging",
-      secondaryLinks: [
-        { name: "Under Eye & Lip", href: "/services/under-eye-lip" },
-        { name: "Microneedling", href: "/services/microneedling" }
-      ]
+
     }
   ];
 
@@ -161,21 +150,11 @@ const Services = () => {
                 <div className="space-y-3">
                   <Link 
                     href={service.primaryLink}
-                    className="block w-full bg-accent-color text-black font-semibold py-3 px-6 rounded-lg text-center hover:bg-yellow-600 transition-all duration-300"
+                    className="block w-full bg-accent-color text-white font-semibold py-3 px-6 rounded-lg text-center hover:bg-yellow-600 transition-all duration-300"
                   >
                     Learn More
                   </Link>
-                  <div className="flex flex-wrap gap-2">
-                    {service.secondaryLinks.map((link, linkIndex) => (
-                      <Link
-                        key={linkIndex}
-                        href={link.href}
-                        className="text-accent-color text-sm hover:underline"
-                      >
-                        {link.name}
-                      </Link>
-                    ))}
-                  </div>
+                  
                 </div>
               </div>
             </div>

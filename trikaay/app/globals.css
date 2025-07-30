@@ -4,11 +4,12 @@
 :root {
   --primary-color: #1a1a1a;
   --secondary-color: #f8f8f8;
-  --accent-color: #d4af37;
+  --accent-color: #739900;
   --text-primary: #1a1a1a;
   --text-secondary: #666666;
   --gradient-primary: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-  --gradient-accent: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+  --gradient-accent: #99cc00;
+
 }
 
 
@@ -33,7 +34,7 @@ body {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+  background: #739900;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

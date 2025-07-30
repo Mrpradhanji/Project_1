@@ -3,9 +3,11 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import emailjs from 'emailjs-com';
-import { toast } from 'react-toastify';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
+
 
 const Contact = () => {
   const contactRef = useRef<HTMLDivElement>(null);
@@ -210,6 +212,9 @@ const Contact = () => {
 
   return (
     <section id="contact" ref={contactRef} className="section-padding bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
+      {/* ✅ Toast Notifications */}
+      <Toaster position="top-center" reverseOrder={false} />
+
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-96 h-96 bg-accent-color/10 rounded-full blur-3xl"></div>
@@ -237,7 +242,7 @@ const Contact = () => {
           <div className="slide-in-left">
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 flex flex-col min-h-[500px]">
               <h2 className="font-playfair text-center text-3xl font-bold text-white mb-6">
-                Book Your <span className='text-yellow-500'>Consultation</span>
+                Book Your <span className='gradient-text'>Consultation</span>
               </h2>
               
               <form onSubmit={handleSubmit} className="space-y-6">
