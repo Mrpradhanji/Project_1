@@ -1,46 +1,46 @@
 import { CheckCircle, Clock, Users, Star, Shield } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import Footer from '../../components/Footer';
 import ServiceHero from '../../components/ServiceHero';
-import Typography from '@mui/material/Typography';
-import Breadcrumbs from '@mui/material/Breadcrumbs';
-import Link from '@mui/material/Link';
+import Contact from '../../components/Contact';
 
 export default function ChemicalPeelsPage() {
   return (
     <main className="min-h-screen bg-white py-0">
-      {/* Breadcrumbs */}
-      <div className="py-4 flex justify-center">
-        <Breadcrumbs aria-label="breadcrumb">
-          <Link underline="hover" color="inherit" href="/">
-            Home
-          </Link>
-          <Typography color="text.primary">Services</Typography>
-          <Typography color="text.primary">Chemical Peels</Typography>
-        </Breadcrumbs>
-      </div>
-      
       {/* Enhanced Hero Section */}
       <ServiceHero
         title="Advanced Chemical Peels"
-        description="Transform your skin with our safe, dermatologist-approved chemical peels. Tailored for Indian skin types, our peels target acne, pigmentation, scars, and dullness with minimal downtime."
+        description="Safe, dermatologist-approved chemical peels to target acne, pigmentation, scars, and dull skin with minimal downtime. Customized treatments for your specific skin concerns."
         imageSrc="/images/ChemicalPeel.jpeg"
         imageAlt="Advanced Chemical Peels"
-        ctaText="Book Peel"
-        ctaHref="/contact"
+        ctaText="Book Consultation"
+        ctaHref="#contact"
         stats={[
-          { value: "30-45 min", label: "Treatment Time" },
-          { value: "0-2 days", label: "Downtime" },
-          { value: "90%", label: "Success Rate" },
-          { value: "1000+", label: "Happy Clients" }
+          { value: "20-30 min", label: "Session Time" },
+          { value: "3-7 days", label: "Downtime" },
+          { value: "87%", label: "Success Rate" },
+          { value: "2200+", label: "Cases Treated" }
         ]}
         trustIndicators={[
-          "Dermatologist Approved",
-          "Safe for Indian Skin",
-          "Minimal Downtime",
-          "Visible Results"
+          "Dermatologist-Approved",
+          "Expert Care",
+          "Customized Treatments",
+          "Proven Results"
         ]}
       />
+
+      {/* Back to Homepage Link */}
+      <section className="py-4 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link
+            href="/"
+            className="text-[var(--accent-color)] hover:text-yellow-600 transition-colors font-medium"
+          >
+            ← Back to Homepage
+          </Link>
+        </div>
+      </section>
 
       {/* Quick Benefits Section */}
       <section className="py-16 bg-gradient-to-r from-gray-50 to-white">
@@ -274,12 +274,16 @@ export default function ChemicalPeelsPage() {
         </p>
 
         {/* CTA */}
-        <div className="flex justify-center">
-          <a href="/contact" className="px-8 py-4 rounded-full bg-[var(--accent-color)] text-white font-semibold shadow-lg hover:bg-yellow-600 transition-all text-lg transform hover:scale-105">
-            ⭐ Book Your Customized Peel Today
+        <div className="flex justify-center mt-8">
+          <a href="#contact" className="px-8 py-4 rounded-full bg-[var(--accent-color)] text-white font-semibold shadow-lg hover:bg-yellow-600 transition-all text-lg transform hover:scale-105">
+            ⭐ Book Your Chemical Peel Consultation Today
           </a>
         </div>
       </section>
+
+      {/* Contact Form Section */}
+      <Contact />
+      
       <Footer />
     </main>
   );

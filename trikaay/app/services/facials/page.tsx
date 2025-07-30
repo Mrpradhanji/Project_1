@@ -1,46 +1,46 @@
-import { CheckCircle, Clock, Users, Star } from 'lucide-react';
+import { CheckCircle, Clock, Users, Star, Target } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import Footer from '../../components/Footer';
 import ServiceHero from '../../components/ServiceHero';
-import Typography from '@mui/material/Typography';
-import Breadcrumbs from '@mui/material/Breadcrumbs';
-import Link from '@mui/material/Link';
+import Contact from '../../components/Contact';
 
 export default function FacialsPage() {
   return (
     <main className="min-h-screen bg-white py-0">
-      {/* Breadcrumbs */}
-      <div className="py-4 flex justify-center">
-        <Breadcrumbs aria-label="breadcrumb">
-          <Link underline="hover" color="inherit" href="/">
-            Home
-          </Link>
-          <Typography color="text.primary">Services</Typography>
-          <Typography color="text.primary">Facials</Typography>
-        </Breadcrumbs>
-      </div>
-      
       {/* Enhanced Hero Section */}
       <ServiceHero
         title="Medical-Grade Facials & Hydrafacials"
-        description="Experience the ultimate in skin rejuvenation with our advanced medical-grade facials. Go beyond salon treatments with FDA-approved technology that delivers visible, long-lasting results for all skin types."
+        description="Advanced skin treatments that go far beyond salon facials. Deeply cleanse, exfoliate, hydrate, and rejuvenate your skin with medical-grade technology and expert care."
         imageSrc="/images/HydraFacial.jpeg"
         imageAlt="Medical-Grade Facials & Hydrafacials"
-        ctaText="Book Your Facial"
-        ctaHref="/contact"
+        ctaText="Book Consultation"
+        ctaHref="#contact"
         stats={[
-          { value: "60+ min", label: "Treatment Time" },
-          { value: "95%", label: "Satisfaction Rate" },
-          { value: "0", label: "Downtime" },
-          { value: "5000+", label: "Happy Clients" }
+          { value: "30-45 min", label: "Session Time" },
+          { value: "0 days", label: "Downtime" },
+          { value: "94%", label: "Success Rate" },
+          { value: "2500+", label: "Cases Treated" }
         ]}
         trustIndicators={[
-          "FDA Approved Technology",
+          "Medical-Grade Technology",
           "Expert Dermatologists",
-          "No Downtime Required",
-          "Visible Results in 1 Session"
+          "Immediate Results",
+          "Safe & Effective"
         ]}
       />
+
+      {/* Back to Homepage Link */}
+      <section className="py-4 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link
+            href="/"
+            className="text-[var(--accent-color)] hover:text-yellow-600 transition-colors font-medium"
+          >
+            ← Back to Homepage
+          </Link>
+        </div>
+      </section>
 
       {/* Quick Benefits Section */}
       <section className="py-16 bg-gradient-to-r from-gray-50 to-white">
@@ -222,11 +222,15 @@ export default function FacialsPage() {
         <p className="mb-6 text-gray-700 text-lg">At Trikaay Aesthetics, we believe that healthy, glowing skin is just one treatment away. Whether you're preparing for a special occasion or investing in your long-term skincare journey, our medical facials in India are designed to give you clinically proven results with a luxurious experience.</p>
         
         <div className="flex justify-center mt-8">
-          <a href="/contact" className="px-8 py-4 rounded-full bg-[var(--accent-color)] text-white font-semibold shadow-lg hover:bg-yellow-600 transition-all text-lg transform hover:scale-105">
-            ⭐ Book Your Medical-Grade Facial at Trikaay Today
+          <a href="#contact" className="px-8 py-4 rounded-full bg-[var(--accent-color)] text-white font-semibold shadow-lg hover:bg-yellow-600 transition-all text-lg transform hover:scale-105">
+            ⭐ Book Your Medical-Grade Facial Consultation Today
           </a>
         </div>
       </section>
+
+      {/* Contact Form Section */}
+      <Contact />
+      
       <Footer />
     </main>
   );

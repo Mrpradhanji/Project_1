@@ -1,9 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Footer from '../components/Footer';
-import Typography from '@mui/material/Typography';
-import Breadcrumbs from '@mui/material/Breadcrumbs';
-import { Link as MuiLink } from '@mui/material';
 
 const allServices = [
   {
@@ -69,16 +66,6 @@ const categories = ["All Services", "Skin Rejuvenation", "Hair Restoration", "De
 export default function ServicesPage() {
   return (
     <main className="min-h-screen bg-white py-0">
-      {/* Breadcrumbs */}
-      <div className="py-4 flex justify-center">
-        <Breadcrumbs aria-label="breadcrumb">
-          <MuiLink underline="hover" color="inherit" href="/">
-            Home
-          </MuiLink>
-          <Typography color="text.primary">Services</Typography>
-        </Breadcrumbs>
-      </div>
-
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -90,6 +77,18 @@ export default function ServicesPage() {
             Discover our comprehensive range of premium treatments designed to enhance your natural beauty 
             and boost your confidence with cutting-edge technology and expert care.
           </p>
+        </div>
+      </section>
+
+      {/* Back to Homepage Link */}
+      <section className="py-4 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link
+            href="/"
+            className="text-[var(--accent-color)] hover:text-yellow-600 transition-colors font-medium"
+          >
+            ← Back to Homepage
+          </Link>
         </div>
       </section>
 

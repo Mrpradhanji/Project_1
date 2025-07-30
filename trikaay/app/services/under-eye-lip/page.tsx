@@ -1,46 +1,46 @@
-import { CheckCircle, Clock, Users, Star, Eye } from 'lucide-react';
+import { CheckCircle, Clock, Users, Star, Target } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import Footer from '../../components/Footer';
 import ServiceHero from '../../components/ServiceHero';
-import Typography from '@mui/material/Typography';
-import Breadcrumbs from '@mui/material/Breadcrumbs';
-import Link from '@mui/material/Link';
+import Contact from '../../components/Contact';
 
 export default function UnderEyeLipPage() {
   return (
     <main className="min-h-screen bg-white py-0">
-      {/* Breadcrumbs */}
-      <div className="py-4 flex justify-center">
-        <Breadcrumbs aria-label="breadcrumb">
-          <Link underline="hover" color="inherit" href="/">
-            Home
-          </Link>
-          <Typography color="text.primary">Services</Typography>
-          <Typography color="text.primary">Under Eye & Lip</Typography>
-        </Breadcrumbs>
-      </div>
-      
       {/* Enhanced Hero Section */}
       <ServiceHero
         title="Under Eye & Lip Treatments"
-        description="Revitalize delicate under-eye and lip areas with our advanced treatments. Target dark circles, fine lines, lip dullness, and volume loss for a refreshed, youthful appearance."
+        description="Revitalize delicate under-eye and lip areas with advanced treatments for dark circles, fine lines, and lip dullness. Specialized care for your most expressive features."
         imageSrc="/images/undereye.jpg"
         imageAlt="Under Eye & Lip Treatments"
         ctaText="Book Consultation"
-        ctaHref="/contact"
+        ctaHref="#contact"
         stats={[
-          { value: "30-45 min", label: "Treatment Time" },
+          { value: "30-45 min", label: "Session Time" },
           { value: "0-1 day", label: "Downtime" },
-          { value: "90%", label: "Satisfaction Rate" },
-          { value: "1500+", label: "Happy Clients" }
+          { value: "90%", label: "Success Rate" },
+          { value: "1600+", label: "Cases Treated" }
         ]}
         trustIndicators={[
+          "Specialized Care",
           "Expert Dermatologists",
-          "Safe for Delicate Areas",
-          "Natural Looking Results",
-          "Minimal Discomfort"
+          "Delicate Area Treatment",
+          "Proven Results"
         ]}
       />
+
+      {/* Back to Homepage Link */}
+      <section className="py-4 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link
+            href="/"
+            className="text-[var(--accent-color)] hover:text-yellow-600 transition-colors font-medium"
+          >
+            ← Back to Homepage
+          </Link>
+        </div>
+      </section>
 
       {/* Quick Benefits Section */}
       <section className="py-16 bg-gradient-to-r from-gray-50 to-white">
@@ -48,7 +48,7 @@ export default function UnderEyeLipPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center p-6 bg-white rounded-2xl shadow-lg border border-gray-100">
               <div className="w-16 h-16 bg-[var(--accent-color)]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Eye className="w-8 h-8 text-[var(--accent-color)]" />
+                <Target className="w-8 h-8 text-[var(--accent-color)]" />
               </div>
               <h3 className="font-semibold text-lg mb-2">Bright Eyes</h3>
               <p className="text-gray-600">Reduce dark circles and brighten the under-eye area</p>
@@ -276,11 +276,15 @@ export default function UnderEyeLipPage() {
         </p>
         
         <div className="flex justify-center mt-8">
-          <a href="/contact" className="px-8 py-4 rounded-full bg-[var(--accent-color)] text-white font-semibold shadow-lg hover:bg-yellow-600 transition-all text-lg transform hover:scale-105">
+          <a href="#contact" className="px-8 py-4 rounded-full bg-[var(--accent-color)] text-white font-semibold shadow-lg hover:bg-yellow-600 transition-all text-lg transform hover:scale-105">
             ⭐ Book Your Under Eye & Lip Consultation Today
           </a>
         </div>
       </section>
+
+      {/* Contact Form Section */}
+      <Contact />
+      
       <Footer />
     </main>
   );

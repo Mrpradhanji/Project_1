@@ -1,47 +1,47 @@
 'use client'
 import { CheckCircle, Clock, Users, Star, TrendingUp } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import Footer from '../../components/Footer';
 import ServiceHero from '../../components/ServiceHero';
-import Typography from '@mui/material/Typography';
-import Breadcrumbs from '@mui/material/Breadcrumbs';
-import Link from '@mui/material/Link';
+import Contact from '../../components/Contact';
 
 export default function QR678HairTherapyPage() {
   return (
     <main className="min-h-screen bg-white py-0">
-      {/* Breadcrumbs */}
-      <div className="py-4 flex justify-center">
-        <Breadcrumbs aria-label="breadcrumb">
-          <Link underline="hover" color="inherit" href="/">
-            Home
-          </Link>
-          <Typography color="text.primary">Services</Typography>
-          <Typography color="text.primary">QR678 Hair Therapy</Typography>
-        </Breadcrumbs>
-      </div>
-      
       {/* Enhanced Hero Section */}
       <ServiceHero
         title="QR678 Hair Growth Therapy"
-        description="Combat hair loss and promote natural hair regrowth with our advanced QR678 Hair Therapy. A patented, non-invasive treatment that revitalizes hair follicles and encourages healthy hair regeneration."
+        description="Combat hair loss and promote natural hair regrowth with our advanced QR678 Hair Therapy, performed by experienced professionals. This revolutionary treatment stimulates dormant hair follicles for natural, lasting results."
         imageSrc="/images/Hairqr678.png"
-        imageAlt="QR678 Hair Therapy at Trikaay"
+        imageAlt="QR678 Hair Growth Therapy"
         ctaText="Book Consultation"
-        ctaHref="/contact"
+        ctaHref="#contact"
         stats={[
-          { value: "20-30 min", label: "Session Time" },
-          { value: "6-8", label: "Sessions Required" },
-          { value: "0", label: "Downtime" },
-          { value: "95%", label: "Success Rate" }
+          { value: "45-60 min", label: "Session Time" },
+          { value: "0 days", label: "Downtime" },
+          { value: "92%", label: "Success Rate" },
+          { value: "1500+", label: "Cases Treated" }
         ]}
         trustIndicators={[
           "Patented Technology",
-          "FDA Approved Formulation",
-          "Non-Surgical Treatment",
-          "Natural Hair Regrowth"
+          "Expert Dermatologists",
+          "Natural Results",
+          "Proven Success"
         ]}
       />
+
+      {/* Back to Homepage Link */}
+      <section className="py-4 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link
+            href="/"
+            className="text-[var(--accent-color)] hover:text-yellow-600 transition-colors font-medium"
+          >
+            ← Back to Homepage
+          </Link>
+        </div>
+      </section>
 
       {/* Quick Benefits Section */}
       <section className="py-16 bg-gradient-to-r from-gray-50 to-white">
@@ -289,12 +289,16 @@ export default function QR678HairTherapyPage() {
           </div>
         </div>
 
-        <div className="flex justify-center">
-          <a href="/contact" className="px-8 py-4 rounded-full bg-[var(--accent-color)] text-white font-semibold shadow-lg hover:bg-yellow-600 transition-all text-lg transform hover:scale-105">
-            Book Your QR678 Consultation Today
+        <div className="flex justify-center mt-8">
+          <a href="#contact" className="px-8 py-4 rounded-full bg-[var(--accent-color)] text-white font-semibold shadow-lg hover:bg-yellow-600 transition-all text-lg transform hover:scale-105">
+            ⭐ Book Your QR678 Hair Therapy Consultation Today
           </a>
         </div>
       </section>
+
+      {/* Contact Form Section */}
+      <Contact />
+      
       <Footer />
     </main>
   );

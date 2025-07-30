@@ -93,7 +93,7 @@ const About = () => {
           <div className="space-y-8">
             <div className="fade-in">
               <h2 className="font-playfair text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                About <span className="gradient-text">Trikaay</span>
+                About <span className="text-[#739900]">Trikaay Aesthetics</span>
               </h2>
               <div className="w-20 h-1 bg-accent-color rounded-full"></div>
             </div>

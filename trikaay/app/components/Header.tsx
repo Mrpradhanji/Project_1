@@ -22,7 +22,7 @@ const Header = () => {
     { name: 'About', href: '#about' },
     {
       name: 'Services',
-      href: '#home',
+      href: '/services',
       dropdown: [
         { name: 'QR678 Hair Therapy', href: '/services/qr678-hair-therapy' },
         { name: 'Medical-Grade Facials & Hydrafacials', href: '/services/facials' },
@@ -42,12 +42,7 @@ const Header = () => {
 
   return (
     <>
-    <a
-      href="#main-content"
-      className="sr-only focus:not-sr-only absolute left-4 top-4 z-50 bg-yellow-600 text-white px-4 py-2 rounded shadow-lg transition-all duration-300"
-    >
-      Skip to main content
-    </a>
+    
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
     }`}>

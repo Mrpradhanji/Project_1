@@ -125,6 +125,18 @@ export default function BlogPage() {
           </div>
         </section>
 
+        {/* Back to Homepage Link */}
+        <section className="py-4 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <Link
+              href="/"
+              className="text-[var(--accent-color)] hover:text-yellow-600 transition-colors font-medium"
+            >
+              ← Back to Homepage
+            </Link>
+          </div>
+        </section>
+
         {/* Services Section */}
         <section className="py-16 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

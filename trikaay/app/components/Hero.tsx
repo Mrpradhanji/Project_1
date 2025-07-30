@@ -107,7 +107,7 @@ const Hero = () => {
           <div className="max-w-4xl mx-auto">
             {/* Main Heading */}
             <h1 className="fade-in font-playfair text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight">
-              Where <span className="gradient-text">Excellence</span>
+              Where <span className="text-[#86b300]">Excellence</span>
               <br />
               Meets Innovation
             </h1>

@@ -1,47 +1,47 @@
 'use client'
 import { CheckCircle, Clock, Users, Star, Zap } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import Footer from '../../components/Footer';
 import ServiceHero from '../../components/ServiceHero';
-import Typography from '@mui/material/Typography';
-import Breadcrumbs from '@mui/material/Breadcrumbs';
-import Link from '@mui/material/Link';
+import Contact from '../../components/Contact';
 
 export default function MicroneedlingPage() {
   return (
     <main className="min-h-screen bg-white py-0">
-      {/* Breadcrumbs */}
-      <div className="py-4 flex justify-center">
-        <Breadcrumbs aria-label="breadcrumb">
-          <Link underline="hover" color="inherit" href="/">
-            Home
-          </Link>
-          <Typography color="text.primary">Services</Typography>
-          <Typography color="text.primary">Microneedling</Typography>
-        </Breadcrumbs>
-      </div>
-      
       {/* Enhanced Hero Section */}
       <ServiceHero
         title="Microneedling with PRP / Derma Pen"
-        description="Revitalize your skin with advanced microneedling technology. Our PRP-enhanced treatments stimulate natural collagen production, reduce scars, and restore your skin's natural glow with minimal downtime."
+        description="Advanced skin rejuvenation using PRP and Derma Pen technology to restore natural glow and boost collagen. This combination treatment delivers superior results for skin texture, tone, and overall appearance."
         imageSrc="/images/microneedle.jpg"
-        imageAlt="Microneedling with PRP"
+        imageAlt="Microneedling with PRP Treatment"
         ctaText="Book Consultation"
-        ctaHref="/contact"
+        ctaHref="#contact"
         stats={[
-          { value: "45-60 min", label: "Treatment Time" },
-          { value: "3-5 days", label: "Recovery Time" },
-          { value: "85%", label: "Success Rate" },
-          { value: "1200+", label: "Happy Clients" }
+          { value: "60-90 min", label: "Session Time" },
+          { value: "3-5 days", label: "Downtime" },
+          { value: "89%", label: "Success Rate" },
+          { value: "1800+", label: "Cases Treated" }
         ]}
         trustIndicators={[
-          "FDA Approved Technology",
+          "Advanced Technology",
           "Expert Dermatologists",
-          "Natural Collagen Stimulation",
+          "Natural Collagen Boost",
           "Proven Results"
         ]}
       />
+
+      {/* Back to Homepage Link */}
+      <section className="py-4 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link
+            href="/"
+            className="text-[var(--accent-color)] hover:text-yellow-600 transition-colors font-medium"
+          >
+            ← Back to Homepage
+          </Link>
+        </div>
+      </section>
 
       {/* Quick Benefits Section */}
       <section className="py-16 bg-gradient-to-r from-gray-50 to-white">
@@ -277,11 +277,15 @@ export default function MicroneedlingPage() {
         </p>
         
         <div className="flex justify-center mt-8">
-          <a href="/contact" className="px-8 py-4 rounded-full bg-[var(--accent-color)] text-white font-semibold shadow-lg hover:bg-yellow-600 transition-all text-lg transform hover:scale-105">
+          <a href="#contact" className="px-8 py-4 rounded-full bg-[var(--accent-color)] text-white font-semibold shadow-lg hover:bg-yellow-600 transition-all text-lg transform hover:scale-105">
             ⭐ Book Your Microneedling Consultation Today
           </a>
         </div>
       </section>
+
+      {/* Contact Form Section */}
+      <Contact />
+      
       <Footer />
     </main>
   );

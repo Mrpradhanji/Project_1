@@ -2,47 +2,47 @@
 
 import { CheckCircle, Clock, Users, Star, Sparkles } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import Footer from '../../components/Footer';
 import ServiceHero from '../../components/ServiceHero';
-import Typography from '@mui/material/Typography';
-import Breadcrumbs from '@mui/material/Breadcrumbs';
-import Link from '@mui/material/Link';
+import Contact from '../../components/Contact';
 
 export default function GFCPage() {
   return (
     <main className="min-h-screen bg-white py-0">
-      {/* Breadcrumbs */}
-      <div className="py-4 flex justify-center">
-        <Breadcrumbs aria-label="breadcrumb">
-          <Link underline="hover" color="inherit" href="/">
-            Home
-          </Link>
-          <Typography color="text.primary">Services</Typography>
-          <Typography color="text.primary">GFC Therapy</Typography>
-        </Breadcrumbs>
-      </div>
-      
       {/* Enhanced Hero Section */}
       <ServiceHero
         title="Growth Factor Concentrate (GFC) Therapy"
-        description="Revitalize your hair and skin with advanced GFC therapy using your own growth factors. This innovative treatment stimulates natural regeneration, promoting healthy hair growth and skin rejuvenation."
+        description="Revitalize your hair and skin with advanced GFC therapy using your own growth factors for natural rejuvenation. This innovative treatment harnesses your body's natural healing processes for optimal results."
         imageSrc="/images/GFC.jpeg"
-        imageAlt="GFC Therapy"
+        imageAlt="GFC Therapy Treatment"
         ctaText="Book Consultation"
-        ctaHref="/contact"
+        ctaHref="#contact"
         stats={[
-          { value: "30-45 min", label: "Session Time" },
-          { value: "6-8", label: "Sessions Required" },
-          { value: "0", label: "Downtime" },
-          { value: "92%", label: "Success Rate" }
+          { value: "45-60 min", label: "Session Time" },
+          { value: "0-1 day", label: "Downtime" },
+          { value: "91%", label: "Success Rate" },
+          { value: "1200+", label: "Cases Treated" }
         ]}
         trustIndicators={[
-          "Your Own Growth Factors",
-          "Natural Regeneration",
+          "Natural Growth Factors",
+          "Expert Dermatologists",
           "Safe & Effective",
           "Proven Results"
         ]}
       />
+
+      {/* Back to Homepage Link */}
+      <section className="py-4 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link
+            href="/"
+            className="text-[var(--accent-color)] hover:text-yellow-600 transition-colors font-medium"
+          >
+            ← Back to Homepage
+          </Link>
+        </div>
+      </section>
 
       {/* Quick Benefits Section */}
       <section className="py-16 bg-gradient-to-r from-gray-50 to-white">
@@ -278,11 +278,15 @@ export default function GFCPage() {
         </p>
         
         <div className="flex justify-center mt-8">
-          <a href="/contact" className="px-8 py-4 rounded-full bg-[var(--accent-color)] text-white font-semibold shadow-lg hover:bg-yellow-600 transition-all text-lg transform hover:scale-105">
+          <a href="#contact" className="px-8 py-4 rounded-full bg-[var(--accent-color)] text-white font-semibold shadow-lg hover:bg-yellow-600 transition-all text-lg transform hover:scale-105">
             ⭐ Book Your GFC Therapy Consultation Today
           </a>
         </div>
       </section>
+
+      {/* Contact Form Section */}
+      <Contact />
+      
       <Footer />
     </main>
   );

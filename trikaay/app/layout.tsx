@@ -76,7 +76,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#1a1a1a" />
       </head>
       
-      <body className="min-h-screen bg-background font-sans antialiased">
+      <body className="min-h-screen bg-background font-sans antialiased" suppressHydrationWarning={true}>
         {children}
         
         {/* Performance Monitoring */}

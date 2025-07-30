@@ -1,46 +1,46 @@
-import { CheckCircle, Clock, Users, Star, Heart } from 'lucide-react';
+import { CheckCircle, Clock, Users, Star, Target } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import Footer from '../../components/Footer';
 import ServiceHero from '../../components/ServiceHero';
-import Typography from '@mui/material/Typography';
-import Breadcrumbs from '@mui/material/Breadcrumbs';
-import Link from '@mui/material/Link';
+import Contact from '../../components/Contact';
 
 export default function AntiAgingPage() {
   return (
     <main className="min-h-screen bg-white py-0">
-      {/* Breadcrumbs */}
-      <div className="py-4 flex justify-center">
-        <Breadcrumbs aria-label="breadcrumb">
-          <Link underline="hover" color="inherit" href="/">
-            Home
-          </Link>
-          <Typography color="text.primary">Services</Typography>
-          <Typography color="text.primary">Anti-Aging</Typography>
-        </Breadcrumbs>
-      </div>
-      
       {/* Enhanced Hero Section */}
       <ServiceHero
         title="Anti-Aging Solutions"
-        description="Rediscover youthful, radiant skin with our advanced anti-aging treatments. Our dermatologist-recommended, FDA-approved solutions target fine lines, wrinkles, sagging, and loss of elasticity for visibly firmer, smoother skin."
+        description="Rediscover youthful, radiant skin with advanced anti-aging treatments targeting fine lines, wrinkles, and loss of elasticity. Our comprehensive approach delivers natural, long-lasting results."
         imageSrc="/images/anti-aging.jpg"
         imageAlt="Anti-Aging Solutions"
         ctaText="Book Consultation"
-        ctaHref="/contact"
+        ctaHref="#contact"
         stats={[
-          { value: "45-60 min", label: "Treatment Time" },
-          { value: "0-1 day", label: "Downtime" },
-          { value: "92%", label: "Satisfaction Rate" },
-          { value: "3000+", label: "Happy Clients" }
+          { value: "45-60 min", label: "Session Time" },
+          { value: "0-2 days", label: "Downtime" },
+          { value: "93%", label: "Success Rate" },
+          { value: "1800+", label: "Cases Treated" }
         ]}
         trustIndicators={[
-          "FDA Approved Technology",
+          "Advanced Technology",
           "Expert Dermatologists",
-          "Natural Looking Results",
-          "Long-lasting Effects"
+          "Natural Results",
+          "Proven Success"
         ]}
       />
+
+      {/* Back to Homepage Link */}
+      <section className="py-4 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link
+            href="/"
+            className="text-[var(--accent-color)] hover:text-yellow-600 transition-colors font-medium"
+          >
+            ← Back to Homepage
+          </Link>
+        </div>
+      </section>
 
       {/* Quick Benefits Section */}
       <section className="py-16 bg-gradient-to-r from-gray-50 to-white">
@@ -48,7 +48,7 @@ export default function AntiAgingPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center p-6 bg-white rounded-2xl shadow-lg border border-gray-100">
               <div className="w-16 h-16 bg-[var(--accent-color)]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Heart className="w-8 h-8 text-[var(--accent-color)]" />
+                <Target className="w-8 h-8 text-[var(--accent-color)]" />
               </div>
               <h3 className="font-semibold text-lg mb-2">Natural Results</h3>
               <p className="text-gray-600">Achieve a refreshed, youthful appearance without looking overdone</p>
@@ -268,11 +268,15 @@ export default function AntiAgingPage() {
         </p>
         
         <div className="flex justify-center mt-8">
-          <a href="/contact" className="px-8 py-4 rounded-full bg-[var(--accent-color)] text-white font-semibold shadow-lg hover:bg-yellow-600 transition-all text-lg transform hover:scale-105">
-            ⭐ Book Your Anti-Aging Consultation at Trikaay Today
+          <a href="#contact" className="px-8 py-4 rounded-full bg-[var(--accent-color)] text-white font-semibold shadow-lg hover:bg-yellow-600 transition-all text-lg transform hover:scale-105">
+            ⭐ Book Your Anti-Aging Consultation Today
           </a>
         </div>
       </section>
+
+      {/* Contact Form Section */}
+      <Contact />
+      
       <Footer />
     </main>
   );
