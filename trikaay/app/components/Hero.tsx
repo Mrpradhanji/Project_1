@@ -105,7 +105,7 @@ const Hero = () => {
         {/* WhatsApp Button (using PhoneCall icon as alternative) */}
         {showScrollTop && (
           <a
-            href="https://wa.me/919999999999" // Replace with your WhatsApp number
+            href="https://wa.me/9015858586" // Replace with your WhatsApp number
             target="_blank"
             rel="noopener noreferrer"
             className="fixed bottom-24 right-8 z-50 bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 flex items-center justify-center animate-fade-in focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2"

@@ -22,20 +22,14 @@ const Footer = () => {
             <div className="flex items-center space-x-6 mb-2 md:mb-0">
               {/* Instagram Icon */}
               <a
-                href="https://www.instagram.com/lensteasers.kids?igsh=ZWVyc3ZpNHpjc2Ry"
+                href="https://www.instagram.com/trikaay_aesthetics?igsh=ODd4dnY4Zm5oMG85"
                 aria-label="Instagram"
                 className="hover:text-[#E1306C] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2"
               >
                 <Instagram className="w-6 h-6" aria-hidden="true" focusable="false" />
               </a>
               {/* Facebook Icon */}
-              <a
-                href="https://www.facebook.com/lensteasersphotography/"
-                aria-label="Facebook"
-                className="hover:text-[#1877F3] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2"
-              >
-                <Facebook className="w-6 h-6" aria-hidden="true" focusable="false" />
-              </a>
+              
             </div>
             {/* Copyright */}
             <p className="text-sm mt-2 md:mt-0">
