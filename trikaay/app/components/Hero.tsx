@@ -105,14 +105,14 @@ const Hero = () => {
         {/* WhatsApp Button (using PhoneCall icon as alternative) */}
         {showScrollTop && (
           <a
-            href="https://wa.me/9015858586" // Replace with your WhatsApp number
-            target="_blank"
-            rel="noopener noreferrer"
-            className="fixed bottom-24 right-8 z-50 bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 flex items-center justify-center animate-fade-in focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2"
-            aria-label="Chat on WhatsApp"
-          >
-            <PhoneCall className="w-6 h-6" aria-hidden="true" focusable="false" />
-          </a>
+          href="https://wa.me/9015858586?text=Hi%2C%20I%20want%20to%20know%20more%20about%20Trikaay%20Aesthetics"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fixed bottom-24 right-8 z-50 bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 flex items-center justify-center animate-fade-in focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2"
+          aria-label="Chat on WhatsApp"
+        >
+          <PhoneCall className="w-6 h-6" aria-hidden="true" focusable="false" />
+        </a>
         )}
 
         {/* Content */}
