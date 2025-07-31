@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import CountUp from 'react-countup';
-import { ArrowUp, PhoneCall } from 'lucide-react';
+import { ArrowUp, PhoneCall, MessageCircle } from 'lucide-react';
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -91,28 +91,41 @@ const Hero = () => {
           <div className="absolute bottom-40 left-20 w-16 h-16 bg-accent-color/30 rounded-full blur-lg animate-pulse delay-2000" aria-hidden="true"></div>
         </div>
 
-        {/* Scroll to Top Button */}
+        {/* Floating Action Buttons - Stacked Vertically */}
         {showScrollTop && (
-          <button
-            onClick={scrollToTop}
-            className="fixed bottom-8 right-8 z-50 bg-black text-white p-3 rounded-full shadow-lg hover:bg-yellow-600 transition-all duration-300 flex items-center justify-center animate-fade-in focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2"
-            aria-label="Scroll to top"
-          >
-            <ArrowUp className="w-6 h-6" aria-hidden="true" focusable="false" />
-          </button>
-        )}
-
-        {/* WhatsApp Button (using PhoneCall icon as alternative) */}
-        {showScrollTop && (
-          <a
-          href="https://wa.me/9015858586?text=Hi%2C%20I%20want%20to%20know%20more%20about%20Trikaay%20Aesthetics"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="fixed bottom-24 right-8 z-50 bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 flex items-center justify-center animate-fade-in focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2"
-          aria-label="Chat on WhatsApp"
-        >
-          <PhoneCall className="w-6 h-6" aria-hidden="true" focusable="false" />
-        </a>
+          <div className="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-4">
+            {/* Scroll to Top Button */}
+            <button
+              onClick={scrollToTop}
+              className="bg-black text-white p-3 rounded-full shadow-lg hover:bg-yellow-600 transition-all duration-300 flex items-center justify-center animate-fade-in focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2"
+              aria-label="Scroll to top"
+            >
+              <ArrowUp className="w-6 h-6" aria-hidden="true" focusable="false" />
+            </button>
+            {/* WhatsApp Button */}
+            <a
+              href="https://wa.me/7589708288?text=Hi%2C%20I%20want%20to%20know%20more%20about%20Trikaay%20Aesthetics"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 flex items-center justify-center animate-fade-in focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2"
+              aria-label="Chat on WhatsApp"
+            >
+              <PhoneCall className="w-6 h-6" aria-hidden="true" focusable="false" />
+            </a>
+            {/* Chatbot Button */}
+            <button
+              onClick={() => {
+                if (window.Tawk_API && window.Tawk_API.maximize) {
+                  window.Tawk_API.maximize();
+                }
+              }}
+              className="bg-purple-600 text-white p-3 rounded-full shadow-lg hover:bg-purple-700 transition-all duration-300 flex items-center justify-center animate-fade-in focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
+              aria-label="Open Chatbot"
+              type="button"
+            >
+              <MessageCircle className="w-6 h-6" aria-hidden="true" focusable="false" />
+            </button>
+          </div>
         )}
 
         {/* Content */}

@@ -16,7 +16,7 @@ export const defaultMetadata: Metadata = {
   creator: 'Trikaay Aesthetics',
   publisher: 'Trikaay Aesthetics',
   alternates: {
-    canonical: '/',
+    canonical: baseUrl,
   },
   openGraph: {
     title: 'Trikaay Aesthetics - Your Beauty Destination',

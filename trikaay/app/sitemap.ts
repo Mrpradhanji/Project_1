@@ -1,23 +1,11 @@
 import { MetadataRoute } from 'next';
-import { getAllBlogPosts } from '@/lib/api';
+
+// Configure for static export
+export const dynamic = 'force-static';
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://trikaayaesthetics.com';
 
-type SitemapEntry = {
-  url: string;
-  lastModified: Date;
-  priority: number;
-  changeFrequency: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never';
-};
-
-// Only include pages that exist in the project
-export const pages: SitemapEntry[] = [
-  { url: '/', lastModified: new Date('2024-01-01'), priority: 1.0, changeFrequency: 'daily' },
-  { url: '/services', lastModified: new Date('2024-01-01'), priority: 0.9, changeFrequency: 'weekly' },
-  { url: '/blog', lastModified: new Date(), priority: 0.8, changeFrequency: 'daily' },
-];
-
-// Main sitemap that references all sitemaps
+// Static sitemap for static export
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
@@ -27,44 +15,64 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/sitemap-pages.xml`,
+      url: `${baseUrl}/services`,
       lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/sitemap-blog.xml`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
+      changeFrequency: 'weekly',
       priority: 0.9,
     },
-  ];
-}
-
-// Sitemap for static pages (kept for backward compatibility)
-export async function generateSitemapPages(): Promise<MetadataRoute.Sitemap> {
-  return pages.map((page) => ({
-    url: `${baseUrl}${page.url === '/' ? '' : page.url}`,
-    lastModified: page.lastModified,
-    changeFrequency: page.changeFrequency,
-    priority: page.priority,
-  }));
-}
-
-// Sitemap for blog posts
-export async function generateSitemapBlog(): Promise<MetadataRoute.Sitemap> {
-  try {
-    // Replace with your actual blog post fetching logic
-    const posts = await getAllBlogPosts();
-    
-    return posts.map((post) => ({
-      url: `${baseUrl}/blog/${post.slug}`,
-      lastModified: new Date(post.updatedAt || post.publishedAt || new Date()),
-      changeFrequency: 'weekly' as const,
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: 'daily',
       priority: 0.8,
-    }));
-  } catch (error) {
-    console.error('Error generating blog sitemap:', error);
-    return [];
-  }
+    },
+    {
+      url: `${baseUrl}/services/acne-pigmentation`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/services/anti-aging`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/services/chemical-peels`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/services/facials`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/services/gfc`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/services/microneedling`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/services/qr678-hair-therapy`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/services/under-eye-lip`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+  ];
 }

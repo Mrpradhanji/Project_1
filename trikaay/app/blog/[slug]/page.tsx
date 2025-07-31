@@ -5,6 +5,13 @@ import Link from 'next/link';
 import { blogPosts } from '../blogData';
 import Footer from '../../components/Footer';
 
+// Generate static params for all blog posts
+export async function generateStaticParams() {
+  return blogPosts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
 }
