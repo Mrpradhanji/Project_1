@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
-import CountUp from 'react-countup';
-import { ArrowUp, PhoneCall, MessageCircle } from 'lucide-react';
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import CountUp from "react-countup";
+import { ArrowUp, Phone, MessageCircle, MessageSquare } from "lucide-react";
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -11,16 +11,16 @@ const Hero = () => {
   // Hero background images for carousel
   const heroImages = [
     {
-      src: '/images/Clinic_1.jpg',
-      alt: 'Clinic View 1',
+      src: "/images/Clinic_1.jpg",
+      alt: "Clinic View 1",
     },
     {
-      src: '/images/Clinic_2.jpg',
-      alt: 'Clinic View 2',
+      src: "/images/Clinic_2.jpg",
+      alt: "Clinic View 2",
     },
     {
-      src: '/images/Clinic_3.jpg',
-      alt: 'Clinic View 3',
+      src: "/images/Clinic_3.jpg",
+      alt: "Clinic View 3",
     },
   ];
   const [current, setCurrent] = useState(0);
@@ -39,14 +39,16 @@ const Hero = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+            entry.target.classList.add("visible");
           }
         });
       },
       { threshold: 0.1 }
     );
 
-    const elements = heroRef.current?.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
+    const elements = heroRef.current?.querySelectorAll(
+      ".fade-in, .slide-in-left, .slide-in-right"
+    );
     elements?.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
@@ -56,18 +58,22 @@ const Hero = () => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 200);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
     <main id="main-content">
       {/* Hero Section */}
-      <section id="home" ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      <section
+        id="home"
+        ref={heroRef}
+        className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+      >
         {/* Background Image Carousel */}
         <div className="absolute inset-0 z-0">
           {heroImages.map((img, idx) => (
@@ -76,19 +82,36 @@ const Hero = () => {
               src={img.src}
               alt={img.alt}
               fill
-              className={`object-cover transition-opacity duration-1000 ${current === idx ? 'opacity-100' : 'opacity-0'}`}
+              className={`object-cover transition-opacity duration-1000 ${
+                current === idx ? "opacity-100" : "opacity-0"
+              }`}
               priority={current === idx}
             />
           ))}
-          <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-black/70 z-10" aria-hidden="true"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-accent-color/20 to-transparent z-20" aria-hidden="true"></div>
+          <div
+            className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-black/70 z-10"
+            aria-hidden="true"
+          ></div>
+          <div
+            className="absolute inset-0 bg-gradient-to-r from-accent-color/20 to-transparent z-20"
+            aria-hidden="true"
+          ></div>
         </div>
 
         {/* Floating Elements */}
         <div className="absolute inset-0 z-30">
-          <div className="absolute top-20 left-10 w-20 h-20 bg-accent-color/20 rounded-full blur-xl animate-pulse" aria-hidden="true"></div>
-          <div className="absolute top-40 right-20 w-32 h-32 bg-white/10 rounded-full blur-2xl animate-pulse delay-1000" aria-hidden="true"></div>
-          <div className="absolute bottom-40 left-20 w-16 h-16 bg-accent-color/30 rounded-full blur-lg animate-pulse delay-2000" aria-hidden="true"></div>
+          <div
+            className="absolute top-20 left-10 w-20 h-20 bg-accent-color/20 rounded-full blur-xl animate-pulse"
+            aria-hidden="true"
+          ></div>
+          <div
+            className="absolute top-40 right-20 w-32 h-32 bg-white/10 rounded-full blur-2xl animate-pulse delay-1000"
+            aria-hidden="true"
+          ></div>
+          <div
+            className="absolute bottom-40 left-20 w-16 h-16 bg-accent-color/30 rounded-full blur-lg animate-pulse delay-2000"
+            aria-hidden="true"
+          ></div>
         </div>
 
         {/* Floating Action Buttons - Stacked Vertically */}
@@ -100,31 +123,34 @@ const Hero = () => {
               className="bg-black text-white p-3 rounded-full shadow-lg hover:bg-yellow-600 transition-all duration-300 flex items-center justify-center animate-fade-in focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2"
               aria-label="Scroll to top"
             >
-              <ArrowUp className="w-6 h-6" aria-hidden="true" focusable="false" />
+              <ArrowUp
+                className="w-6 h-6"
+                aria-hidden="true"
+                focusable="false"
+              />
             </button>
+            {/* Phone Call Button */}
+            <a
+              href="tel:+918360065258"
+              className="bg-blue-500 text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition-all duration-300 flex items-center justify-center animate-fade-in focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2"
+              aria-label="Call us"
+            >
+              <Phone className="w-6 h-6" aria-hidden="true" focusable="false" />
+            </a>
             {/* WhatsApp Button */}
             <a
-              href="https://wa.me/7589708288?text=Hi%2C%20I%20want%20to%20know%20more%20about%20Trikaay%20Aesthetics"
+              href="https://wa.me/918360065258?text=Hi%2C%20I%20want%20to%20know%20more%20about%20Trikaay%20Aesthetics"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 flex items-center justify-center animate-fade-in focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2"
               aria-label="Chat on WhatsApp"
             >
-              <PhoneCall className="w-6 h-6" aria-hidden="true" focusable="false" />
+              <MessageSquare
+                className="w-6 h-6"
+                aria-hidden="true"
+                focusable="false"
+              />
             </a>
-            {/* Chatbot Button */}
-            <button
-              onClick={() => {
-                if (window.Tawk_API && window.Tawk_API.maximize) {
-                  window.Tawk_API.maximize();
-                }
-              }}
-              className="bg-purple-600 text-white p-3 rounded-full shadow-lg hover:bg-purple-700 transition-all duration-300 flex items-center justify-center animate-fade-in focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
-              aria-label="Open Chatbot"
-              type="button"
-            >
-              <MessageCircle className="w-6 h-6" aria-hidden="true" focusable="false" />
-            </button>
           </div>
         )}
 
@@ -140,8 +166,9 @@ const Hero = () => {
 
             {/* Subtitle */}
             <p className="slide-in-left font-inter text-xl md:text-2xl text-gray-200 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Experience the pinnacle of luxury and cutting-edge technology in our state-of-the-art facility, 
-              where every detail is crafted for your ultimate satisfaction.
+              Experience the pinnacle of luxury and cutting-edge technology in
+              our state-of-the-art facility, where every detail is crafted for
+              your ultimate satisfaction.
             </p>
           </div>
         </div>
